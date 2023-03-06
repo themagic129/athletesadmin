@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Athlete;
+use App\Models\Athletes;
+use App\Models\Roles;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AthletesController extends Controller
@@ -13,7 +17,13 @@ class AthletesController extends Controller
      */
     public function index()
     {
-        return view('athletes.index');
+        
+        $athletes = Athlete::all();
+
+        return view('athletes.index', compact('athletes'));
+
+
+     
     }
 
     /**
@@ -23,7 +33,8 @@ class AthletesController extends Controller
      */
     public function create()
     {
-        //
+         
+        return view('athletes.create');
     }
 
     /**
@@ -34,7 +45,29 @@ class AthletesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $athlete = new Athlete();        
+
+        $athlete->user_id = $request->input('user_id');
+        $athlete->organization= $request->input('organization');
+        $athlete->first_name = $request->input('first_name');
+        $athlete->last_name = $request->input('last_name');
+        $athlete->coach_trainer_id = $request->input('coach_trainer_id');
+        $athlete->program = $request->input('program');
+        $athlete->team= $request->input('team');
+      
+        $athlete->height= $request->input('height');
+        $athlete->weight = $request->input('weight');
+        $athlete->bats = $request->input('bats');
+        $athlete->throws = $request->input('throws');
+        $athlete->phone = $request->input('phone');        
+        $athlete->email = $request->input('email');
+        $athlete->profile_photo = $request->input('profile_photo');
+
+        $athlete->save();
+
+        session()->flash('message', 'Athlete added successfully!');
+
+        return redirect('athletes');
     }
 
     /**
