@@ -93,12 +93,13 @@
                       @foreach ($coaches as $coach)
                       <tr>                      
                         <td>{{$coach->user_id}}</td>
-                        <td>{{$coach->certification}}</td>
+                        <td>{{$coach->certifications}}</td>
                         <td>{{$coach->organization}}</td>
                         <td>{{$coach->first_name}}</td>
+                        <td>{{$coach->last_name}}</td>
                         <td>{{$coach->phone}}</td>
                         <td>{{$coach->email}}</td>
-                        <td>{{$coach->speciality}}</td>
+                        <td>{{$coach->specialty}}</td>
                                                          
                         <td>                        
                                                
@@ -114,8 +115,8 @@
 
                         </td>                         
                       </tr>
-                      @include('athletes.destroy')
-                      @include('athletes.edit')
+                      @include('coaches.destroy')
+                      @include('coaches.edit')
                       @endforeach
                       @endif
                     </tbody>

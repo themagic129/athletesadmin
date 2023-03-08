@@ -66,7 +66,7 @@
                                           <td>{{$use->id}}</td>
                                           <td>{{$use->name}}</td>
                                           <td>{{$use->email}}</td>
-                                          <td><button class="btn-enviar btn btn-info" data-dismiss="modal">Add</button></td>
+                                          <td><button class="btn-enviar btn btn-info" data-dismiss="modal" data-toggle="collapse" data-target="#myContent">Add</button></td>
                                         </tr>                                    
                                         @endforeach
                                         @endif

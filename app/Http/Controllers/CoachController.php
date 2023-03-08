@@ -50,7 +50,22 @@ class CoachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $coaches = new coaches_trainers();     
+
+        $coaches->user_id = $request->input('user_id');
+        $coaches->certifications= $request->input('certifications');
+        $coaches->organization = $request->input('organization');
+        $coaches->first_name = $request->input('first_name');
+        $coaches->last_name = $request->input('last_name');
+        $coaches->phone = $request->input('phone');
+        $coaches->email= $request->input('email');      
+        $coaches->specialty= $request->input('specialty');       
+
+        $coaches->save();
+
+        session()->flash('message', 'Coach added successfully!');
+
+        return redirect('coaches');
     }
 
     /**
@@ -93,8 +108,14 @@ class CoachController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id)
     {
-        //
+        $coaches = coaches_trainers::where('user_id', $user_id);
+        if ($coaches) {
+            $coaches->delete();
+            
+        }
+     
+        return redirect('coaches');
     }
 }

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Athletes')
+@section('title', 'Coaches')
 
 @section('content_header')
   
@@ -66,7 +66,7 @@
                                           <td>{{$use->id}}</td>
                                           <td>{{$use->name}}</td>
                                           <td>{{$use->email}}</td>
-                                          <td><button class="btn-enviar btn btn-info" data-dismiss="modal">Add</button></td>
+                                          <td><button class="btn-enviar btn btn-info" data-dismiss="modal" data-toggle="collapse" data-target="#myContent">Add</button></td>
                                         </tr>                                    
                                         @endforeach
                                         @endif
@@ -90,9 +90,8 @@
                                   </div>
                                 </div>
                                 
-                                
 
-                <form action="" method="post">
+                <form action="{{route('coaches.store')}}" method="post">
 
                   @csrf       
                                
@@ -124,17 +123,12 @@
                         <label for="validationDefault05">First Name</label>
                         <input type="text" class="form-control" id="validationDefault05" name="first_name" required>
                       </div>
-                
+
                       <div class="col mb-3">
-                        <label for="validationDefault04">Last Name</label>
-                        <select class="custom-select" id="validationDefault04" name="last_name" required>
-                          <option selected disabled value="">Seleccionar...</option>
-                          <option selected disabled value="">Many</option>
-                                                              
-                        </select>
+                        <label for="validationDefault05">Last Name</label>
+                        <input type="text" class="form-control" id="validationDefault05" name="last_name" required>
                       </div>
-                     
-                      
+                
                     </div>
                 
                     <div class="form-row">
@@ -148,8 +142,7 @@
                           <label for="validationDefault03">Email</label>
                           <input type="text" class="form-control" id="validationDefault03" name="email" required>
                         </div>
-                
-                                                    
+                                  
                       
                     </div>
                 
@@ -166,7 +159,7 @@
                     
                 <div class="form-row">
                   <div class="col text-center mt-3">
-                    <a href="{{route('athletes.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>
+                    <a href="{{route('coaches.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>
                     <button type="submit" class="btn btn-primary col-4 mb-3">Create</button>                   
 
                   </div>
