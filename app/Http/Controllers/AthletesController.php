@@ -15,15 +15,26 @@ class AthletesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
         $athletes = Athlete::all();
-        $users = User::all();
+        $q = $request->input('q');
+        $users = User::where('email','like', "%$q%")->paginate(7);        
         return view('athletes.index', compact('athletes','users'));
 
 
+
      
+    }
+
+    public function searchUser(Request $request){
+
+        $athletes = Athlete::all();
+        $q = $request->input('q');
+        $users = User::where('email','like', "%$q%")->paginate(7);        
+        return view('athletes.create', compact('athletes','users'));
+
     }
 
     /**

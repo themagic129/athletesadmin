@@ -24,6 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('athletes', 'AthletesController');
 
-Route::resource('users', 'UsersController');
+Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 
-Route::post('/users/selectUser', [App\Http\Controllers\UsersController::class, 'selectUser'])->name('users.selectUser');

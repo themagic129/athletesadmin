@@ -3,39 +3,43 @@
 @section('title', 'Athletes')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+  
 @stop
 
 <!--Content main-->
 @section('content')
 
-    <div class="container col-8">
+    <div class="container col-10">
 
         <div class="row">
             <div class="col">
 
                 <!-- Tarjeta Contenedora de la tabla -->               
               
-                <div class="card">
+                <div class="card mt-2" style="overflow-y: scroll; max-height: 800px;">
                   <div class="card-header">                
                      <h5 class="ml-2">Manage Athletes</h5>
                     <div class="container-fluid mt-2">
                       <div class="row">
-                          <div class="col">
-                              <div class="card mt-1">
-                                  <div class="card-body">
-                                   
-                        <div class="modal fade" id="modal-users" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h4 class="modal-title fs-5" id="exampleModalLabel">Users List</h4>
+                          
+                               <div class="card-body">                                   
+                       
+                                <div class="form-row mb-2">
+
+                                  <form action="{{route('searchuser')}}" method="GET" class="form-inline my-2 my-lg-0">
+                                              
+                                    @csrf
+
+                                    <input class="form-control mr-sm-2 col-8 ml-1" placeholder="User Email" name="q">                                  
+
+                                    <button type="submit" class="btn btn-primary my-2 my-sm-0" >Search</button>
+                                         
+                                    </form>   
                                
-                              </div>
-                              <div class="modal-body">
-                                    
+                                </div>
+                              
                                 <table class="table" id="mi-tabla">
-                                  <thead>
+                                  <thead class="bg-dark">
                                     <tr>
                                       <th scope="col">ID</th>
                                       <th scope="col">Username</th>
@@ -58,13 +62,9 @@
 
                               </div>
 
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cancelar</button>
-                                  <button class="btn btn-primary"  type="submit" data-dismiss="modal">Agregar</button>
-                                </div>
                                 
-                              </div>
-                            </div>
+                            
+                            
                           </div>
                        
 
@@ -72,21 +72,22 @@
                       <!-- Fin Formulario -->
 
 
-
-
-
                 <form action="" method="post">
 
-                  @csrf                         
-                
-                               
+                  @csrf       
+                  <div class="row">
+                  <div class="col">
+                    
+                  
+                  </div>  
+                  
+                  </div>                 
+                  <h5 class="card-header">Athlete's Information</h5>
                     <div class="form-row">
                       <div class="col">
                         <label for="validationDefault01">ID</label>
-                        <input type="text" class="form-control" id="userid" value="" name="user_id" required>
+                        <input type="text" class="form-control" id="userid" value="" name="user_id" required disabled>
 
-                          <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-primary btn-md mt-1" data-toggle="modal" data-target="#modal-users">Add User</button>
                       </div>
                       
                      
@@ -226,10 +227,9 @@
                 
                 </div>
                 <div class="form-row">
-                  <div class="col text-center">
+                  <div class="col text-center mt-3">
                     <a href="{{route('athletes.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>
-                    <button type="submit" class="btn btn-success col-4 mb-3">Create</button>
-                   
+                    <button type="submit" class="btn btn-primary col-4 mb-3">Create</button>                   
 
                   </div>
                  
