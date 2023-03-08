@@ -37,7 +37,7 @@
 
                                          <div class="row">
 
-                                          <a href="{{route('athletes.create')}}">Create Athlete</a>
+                                          <a href="{{route('athletes.create')}}" class="btn btn-primary">Create Athlete</a>
                                         <div class="col d-flex">
                                           <!-- Form Busqueda -->
                                             <form action="{{route('athletes.index')}}" method="GET" class="form-inline my-2 my-lg-0">

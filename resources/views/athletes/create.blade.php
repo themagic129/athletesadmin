@@ -24,14 +24,7 @@
                           <div class="col">
                               <div class="card mt-1">
                                   <div class="card-body">
-
-                                    <div class="col text-right">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal-users">
-                                          Search User
-                                        </button>
-                                    </div>
-               
+                                   
                         <div class="modal fade" id="modal-users" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -57,7 +50,7 @@
                                       <td>{{$use->id}}</td>
                                       <td>{{$use->name}}</td>
                                       <td>{{$use->email}}</td>
-                                      <td><button class="btn-enviar btn btn-info">Add</button></td>
+                                      <td><button class="btn-enviar btn btn-info" data-dismiss="modal">Add</button></td>
                                     </tr>                                    
                                     @endforeach
                                   </tbody>
@@ -88,15 +81,21 @@
                 
                                
                     <div class="form-row">
-                      <div class="col mb-3">
+                      <div class="col">
                         <label for="validationDefault01">ID</label>
                         <input type="text" class="form-control" id="userid" value="" name="user_id" required>
+
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary btn-md mt-1" data-toggle="modal" data-target="#modal-users">Add User</button>
                       </div>
+                      
+                     
                       <div class="col mb-3">
                         <label for="validationDefault02">Organization</label>
                         <input type="text" class="form-control" id="validationDefault02" value="" name="organization" required>
                       </div>
                     </div>
+                    
                     
                     <div class="form-row">
                      
@@ -226,8 +225,17 @@
                     </div>
                 
                 </div>
-                
-                <button type="submit" class="btn btn-success col-8 ml-auto mr-auto mb-4">Create</button>
+                <div class="form-row">
+                  <div class="col text-center">
+                    <a href="{{route('athletes.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>
+                    <button type="submit" class="btn btn-success col-4 mb-3">Create</button>
+                   
+
+                  </div>
+                 
+
+                </div>
+               
                 
                 </div>
                 </div>
