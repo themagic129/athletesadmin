@@ -18,7 +18,7 @@
               
                 <div class="card mt-2" style="overflow-y: scroll; max-height: 800px;">
                   <div class="card-header">                
-                     <h5 class="ml-2">Manage Athletes</h5>
+                     <h5 class="ml-2">Manage Coaches</h5>
                     <div class="container-fluid mt-2">
                       <div class="row">
                           
@@ -92,11 +92,11 @@
                                 
                                 
 
-                <form action="{{route('athletes.store')}}" method="post">
+                <form action="" method="post">
 
                   @csrf       
                                
-                  <h5 class="card-header">Athlete's Information</h5>
+                  <h5 class="card-header mb-3">Coach Information's</h5>
                     <div class="form-row">
                       <div class="col">
                         <label for="validationDefault01">ID</label>
@@ -106,8 +106,8 @@
                       
                      
                       <div class="col mb-3">
-                        <label for="validationDefault02">Organization</label>
-                        <input type="text" class="form-control" id="validationDefault02" value="" name="organization" required>
+                        <label for="validationDefault02">Certifications</label>
+                        <input type="text" class="form-control" id="validationDefault02" value="" name="certifications" required>
                       </div>
                     </div>
                     
@@ -115,19 +115,19 @@
                     <div class="form-row">
                      
                       <div class="col mb-3">
-                        <label for="validationDefault05">First Name</label>
-                        <input type="text" class="form-control" id="validationDefault05" name="first_name" required>
+                        <label for="validationDefault05">Organization</label>
+                        <input type="text" class="form-control" id="validationDefault05" name="organization" required>
                       </div>    
                 
                 
                       <div class="col mb-3">
-                        <label for="validationDefault05">Last Name</label>
-                        <input type="text" class="form-control" id="validationDefault05" name="last_name" required>
+                        <label for="validationDefault05">First Name</label>
+                        <input type="text" class="form-control" id="validationDefault05" name="first_name" required>
                       </div>
                 
                       <div class="col mb-3">
-                        <label for="validationDefault04">Coach/Trainer</label>
-                        <select class="custom-select" id="validationDefault04" name="coach_trainer_id" required>
+                        <label for="validationDefault04">Last Name</label>
+                        <select class="custom-select" id="validationDefault04" name="last_name" required>
                           <option selected disabled value="">Seleccionar...</option>
                           <option selected disabled value="">Many</option>
                                                               
@@ -140,13 +140,13 @@
                     <div class="form-row">
                      
                       <div class="col mb-3">
-                          <label for="validationDefault05">Program</label>
-                          <input type="text" class="form-control" id="validationDefault05" name="program" required>
+                          <label for="validationDefault05">Phone</label>
+                          <input type="text" class="form-control" id="validationDefault05" name="phone" required>
                         </div> 
                   
                         <div class="col mb-3">
-                          <label for="validationDefault03">Team</label>
-                          <input type="text" class="form-control" id="validationDefault03" name="team" required>
+                          <label for="validationDefault03">Email</label>
+                          <input type="text" class="form-control" id="validationDefault03" name="email" required>
                         </div>
                 
                                                     
@@ -154,92 +154,16 @@
                     </div>
                 
                     <div class="form-row">
-                      
-                      <!--<div class="col mb-3">
-                          <label for="validationDefault05">Birthday</label>
-                          <input type="text" class="form-control" id="validationDefault05" name="birthday" required>
-                      </div> -->
-                     
+                    
                       <div class="col mb-3">
-                        <label for="validationDefault05">Height</label>
-                        <input type="text" class="form-control" id="validationDefault05" name="height" required>
+                        <label for="validationDefault05">Specialty</label>
+                        <input type="text" class="form-control" id="validationDefault05" name="specialty" required>
                     </div> 
                 
                 
                     </div>
                 
-                    <div class="form-row">
-                      
-                      
-                      <div class="col mb-3">
-                          <label for="validationDefault05">Weight</label>
-                          <input type="text" class="form-control" id="validationDefault05" name="weight" required>
-                      </div> 
-                
-                      <div class="col mb-3">
-                      
-                        <label for="validationDefault04">Bats</label>
-                        <select class="custom-select" id="validationDefault04" name="bats" required>
-                        <option selected disabled value="">Seleccionar...</option>
-                        <option>L</option>
-                        <option>R</option>
-                        <option>B</option>
-                                                              
-                        </select>
-                
-                
-                    </div>
                     
-                    <div class="col mb-3">
-                      <label for="validationDefault04">Throws</label>
-                      <select class="custom-select" id="validationDefault04" name="throws" required>
-                      <option selected disabled value="">Seleccionar...</option>
-                      <option>L</option>
-                      <option>R</option>
-                      
-                    </select>
-                    </div> 
-                    
-                
-                    </div>
-                
-                    <div class="form-row">
-                    
-                      <div class="col">
-                        <div class="form-row">
-                          <div class="col mb-3">
-                              <label for="validationDefault05">Phone</label>
-                              <input type="text" class="form-control" id="validationDefault05" name="phone" required>
-                            </div>                                
-                        </div>                                  
-                      </div>
-                
-                      <div class="col">
-                
-                        <div class="mb-3">
-                          <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
-                        </div>
-                
-                      </div>
-                     
-                   
-                    </div>
-                  
-                    <div class="form-row">
-                         <div class="col">  
-                        <label for="customFile">Profile Photo</label>                                
-                        <div class="custom-file">
-                          
-                          <input type="file" class="custom-file-input" id="customFile" name="profile_photo">
-                          <label class="custom-file-label" for="customFile">Choose file</label>
-                        </div>
-                                                       
-                      </div>
-                      
-                    </div>
-                
-                </div>
                 <div class="form-row">
                   <div class="col text-center mt-3">
                     <a href="{{route('athletes.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>

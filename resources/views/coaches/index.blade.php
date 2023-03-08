@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Athletes')
+@section('title', 'Coaches')
 
 @section('content_header')
    
@@ -14,12 +14,10 @@
         <div class="row">
             <div class="col">
 
-
-              
                 <!-- Tarjeta Contenedora de la tabla -->               
               <div class="card mt-2">
                 <div class="card-header">                
-                   <h5 class="ml-2">Manage Athletes</h5>
+                   <h5 class="ml-2">Manage Coaches</h5>
                   <div class="container-fluid mt-2">
                     <div class="row">
                         <div class="col">
@@ -42,7 +40,7 @@
                                           
                                         <div class="col d-flex">
                                           <!-- Form Busqueda -->
-                                            <form action="{{route('athletes.index')}}" method="GET" class="form-inline my-2 my-lg-0">
+                                            <form action="{{route('coaches.index')}}" method="GET" class="form-inline my-2 my-lg-0">
                                               
                                             @csrf
 
@@ -51,7 +49,7 @@
                                                 
                                               </form>  
                                              
-                                              <a href="{{route('athletes.create')}}" class="btn btn-info ml-2">Create Athlete</a>
+                                              <a href="{{route('coaches.create')}}" class="btn btn-info ml-2">Create Coach</a>
                                                                                           
                                         </div> 
                                         
@@ -71,7 +69,7 @@
                 <div class="card-body" style="margin-top: -0.5rem !important;">                
                        
                   
-                    @if(count($athletes) == 0)
+                    @if(count($coaches) == 0)
                         <p class="text-center">No data to display</p>
                     @else
                 <table class="table text-center">
@@ -80,53 +78,37 @@
                       
                       <tr>
                         <th>ID</th>
+                        <th>Certifications</th>
                         <th>Organization</th>
-                        <th>Team</th>
-                        <th>Coach</th>
-                        <th>Program</th>
                         <th>First Name</th>
-                        <th>Last Name</th>    
-                        <th>Birthday</th> 
-                        <th>Height</th>
-                        <th>Weight</th>
-                        <th>Bats</th>
-                        <th>Throws</th>
+                        <th>Last Name</th>
                         <th>Phone</th>
-                        <th>Email</th>
-                        <th>Profile Photo</th>   
+                        <th>Email</th>    
+                        <th>Speciality</th>                       
                         <th>Action</th>                    
                         
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($athletes as $athlete)
+                      @foreach ($coaches as $coach)
                       <tr>                      
-                        <td>{{$athlete->user_id}}</td>
-                        <td>{{$athlete->organization}}</td>
-                        <td>{{$athlete->team}}</td>
-                        <td>{{$athlete->coach_trainer_id}}</td>
-                        <td>{{$athlete->program}}</td>
-                        <td>{{$athlete->first_name}}</td>
-                        <td>{{$athlete->last_name}}</td>
-                        <td>{{$athlete->birthday}}</td>
-                        <td>{{$athlete->height}}</td>
-                        <td>{{$athlete->weight}}</td>
-                        <td>{{$athlete->bats}}</td>
-                        <td>{{$athlete->throws}}</td>
-                        <td>{{$athlete->phone}}</td>
-                        <td>{{$athlete->email}}</td>
-                        <td>{{$athlete->profile_photo}}</td>
-                       
-                                 
+                        <td>{{$coach->user_id}}</td>
+                        <td>{{$coach->certification}}</td>
+                        <td>{{$coach->organization}}</td>
+                        <td>{{$coach->first_name}}</td>
+                        <td>{{$coach->phone}}</td>
+                        <td>{{$coach->email}}</td>
+                        <td>{{$coach->speciality}}</td>
+                                                         
                         <td>                        
                                                
                            <!-- Button trigger modal -->
-                           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal-edit-{{$athlete->user_id}}">
+                           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal-edit-{{$coach->user_id}}">
                             Edit
                           </button>
 
                           <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#modal-delete-{{$athlete->user_id}}">
+                          <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#modal-delete-{{$coach->user_id}}">
                             Delete
                           </button>
 

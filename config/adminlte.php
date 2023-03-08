@@ -329,7 +329,7 @@ return [
 
                 [
                     'text' => 'Coaches',
-                    'url'  => 'cars',
+                    'url'  => 'coaches',
                     'icon' => 'fas fa-chalkboard-teacher',
                 ],
                 
