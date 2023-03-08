@@ -3,7 +3,7 @@
 @section('title', 'Athletes')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+   
 @stop
 
 <!--Content main-->
@@ -15,7 +15,7 @@
             <div class="col">
 
                 <!-- Tarjeta Contenedora de la tabla -->               
-              <div class="card">
+              <div class="card mt-2">
                 <div class="card-header">                
                    <h5 class="ml-2">Manage Athletes</h5>
                   <div class="container-fluid mt-2">
@@ -69,7 +69,6 @@
                 <div class="card-body" style="margin-top: -0.5rem !important;">                
                        
                   
-                    <!-- Tabla Productos -->
                     @if(count($athletes) == 0)
                         <p class="text-center">No data to display</p>
                     @else
@@ -120,12 +119,12 @@
                         <td>                        
                                                
                            <!-- Button trigger modal -->
-                           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal-edit-{{$athlete->id}}">
+                           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modal-edit-{{$athlete->user_id}}">
                             Edit
                           </button>
 
                           <!-- Button trigger modal -->
-                          <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#modal-delete-{{$athlete->id}}">
+                          <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#modal-delete-{{$athlete->user_id}}">
                             Delete
                           </button>
 

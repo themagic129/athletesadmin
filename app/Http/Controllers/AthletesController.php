@@ -17,9 +17,8 @@ class AthletesController extends Controller
      */
     public function index(Request $request)
     {
-        
-        $athletes = Athlete::all();
         $q = $request->input('q');
+        $athletes = Athlete::where('first_name','like', "%$q%")->paginate(7);      
         $users = User::where('email','like', "%$q%")->paginate(7);        
         return view('athletes.index', compact('athletes','users'));
 
