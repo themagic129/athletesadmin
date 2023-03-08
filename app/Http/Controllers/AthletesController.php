@@ -19,8 +19,8 @@ class AthletesController extends Controller
     {
         
         $athletes = Athlete::all();
-
-        return view('athletes.index', compact('athletes'));
+        $users = User::all();
+        return view('athletes.index', compact('athletes','users'));
 
 
      
@@ -33,8 +33,9 @@ class AthletesController extends Controller
      */
     public function create()
     {
-         
-        return view('athletes.create');
+        $users = User::all();
+        return view ('athletes.create', compact('users'));
+        
     }
 
     /**

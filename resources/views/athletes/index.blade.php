@@ -24,9 +24,6 @@
                             <div class="card mt-1">
                                 <div class="card-body">
                                   
-                                 
-
-
                                 <!-- Button trigger modal                               
 
                                         <div class="row">
@@ -40,21 +37,19 @@
 
                                          <div class="row">
 
-                                          
+                                          <a href="{{route('athletes.create')}}">Create Athlete</a>
                                         <div class="col d-flex">
                                           <!-- Form Busqueda -->
                                             <form action="{{route('athletes.index')}}" method="GET" class="form-inline my-2 my-lg-0">
                                               
-                                           @csrf
+                                            @csrf
 
                                                 <input class="form-control mr-sm-2" placeholder="Athlete Name" name="q">
                                                 <button type="submit" class="btn btn-primary my-2 my-sm-0" >Search</button>
                                                 
                                               </form>  
-                                              
-                                              <button type="button" class="btn btn-info ml-2" data-bs-toggle="modal" data-bs-target="#create_athlete_modal">
-                                               Create Athlete
-                                              </button>  
+                                             
+
                                                                                           
                                         </div> 
 
@@ -70,8 +65,9 @@
                 </div>
                          
 
-                <div class="card-body" style="margin-top: -0.5rem !important;">                 
+                <div class="card-body" style="margin-top: -0.5rem !important;">                
                        
+                  
                     <!-- Tabla Productos -->
                     @if(count($athletes) == 0)
                         <p class="text-center">No data to display</p>
