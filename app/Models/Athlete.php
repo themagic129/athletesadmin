@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\coaches_trainers;
+
 
 class Athlete extends Model
 {
@@ -17,7 +19,16 @@ class Athlete extends Model
 
     }
 
+    public function coach_trainer()
+    {
+        return $this->belongsTo(coaches_trainers::class, 'coach_trainer_id');
+    }
+
     public $timestamps = false;
+    protected $primaryKey = 'user_id';
+
+
+
 
 
 }

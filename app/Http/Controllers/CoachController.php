@@ -87,7 +87,10 @@ class CoachController extends Controller
      */
     public function edit($id)
     {
-        //
+        $coaches = coaches_trainers::all();
+
+        return view('coaches.edit',compact('coaches'));
+
     }
 
     /**
@@ -99,7 +102,19 @@ class CoachController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $coaches = coaches_trainers::findOrFail($id);
+        
+        $coaches->user_id = $request->input('user_id');
+        $coaches->certifications= $request->input('certifications');
+        $coaches->organization = $request->input('organization');
+        $coaches->first_name = $request->input('first_name');
+        $coaches->last_name = $request->input('last_name');
+        $coaches->phone = $request->input('phone');
+        $coaches->email= $request->input('email');      
+        $coaches->specialty= $request->input('specialty');     
+        $coaches->save();
+        session()->flash('message', 'Coach created successfully!');
+        return redirect('coaches');
     }
 
     /**
@@ -111,6 +126,7 @@ class CoachController extends Controller
     public function destroy($user_id)
     {
         $coaches = coaches_trainers::where('user_id', $user_id);
+        
         if ($coaches) {
             $coaches->delete();
             

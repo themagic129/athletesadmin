@@ -99,12 +99,13 @@
                       </tr>
                     </thead>
                     <tbody>
+                      
                       @foreach ($athletes as $athlete)
                       <tr>                      
                         <td>{{$athlete->user_id}}</td>
                         <td>{{$athlete->organization}}</td>
                         <td>{{$athlete->team}}</td>
-                        <td>{{$athlete->coach_trainer_id}}</td>
+                        <td>{{$athlete->coach_trainer->first_name}} {{$athlete->coach_trainer->last_name}}</td>
                         <td>{{$athlete->program}}</td>
                         <td>{{$athlete->first_name}}</td>
                         <td>{{$athlete->last_name}}</td>
@@ -134,6 +135,7 @@
                       </tr>
                       @include('athletes.destroy')
                       @include('athletes.edit')
+                     
                       @endforeach
                       @endif
                     </tbody>

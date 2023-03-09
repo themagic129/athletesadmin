@@ -34,7 +34,7 @@
 
                                     <div class="form-row mb-2">
 
-                                      <form action="{{route('searchuser')}}" method="GET" class="form-inline my-2 my-lg-0">
+                                      <form action="{{route('coachsearchuser')}}" method="GET" class="form-inline my-2 my-lg-0">
                                                   
                                         @csrf
     
@@ -170,10 +170,7 @@
                 
                 </div>
                 </div>
-                          
-               
-                
-                
+                       
                   </form>
                 <!-- Fin Formulario -->
 

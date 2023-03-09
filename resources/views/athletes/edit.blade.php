@@ -23,7 +23,7 @@
             <div class="form-row">
               <div class="col">
                 <label for="validationDefault01">ID</label>
-                <input type="text" class="form-control" id="userid" value="{{$athlete->user_id}}" name="user_id" required disabled>
+                <input type="text" class="form-control" id="userid" value="{{$athlete->user_id}}" name="user_id" required>
 
               </div>
               
@@ -51,8 +51,13 @@
               <div class="col mb-3">
                 <label for="validationDefault04">Coach/Trainer</label>
                 <select class="custom-select" id="validationDefault04" value="{{$athlete->coach_trainer_id}}" name="coach_trainer_id" required>
-                  <option selected disabled value="">Seleccionar...</option>
-                  <option selected disabled value="">Many</option>
+                  
+                  <option hidden selected value="{{$athlete->coach_trainer_id}}">{{$athlete->coach_trainer->first_name}}</option>
+
+                  @foreach ($coaches as $coach)
+                  <option value="{{$coach->user_id}}">{{$coach->first_name}}</option>
+
+              @endforeach
                                                       
                 </select>
               </div>
@@ -63,9 +68,18 @@
             <div class="form-row">
              
               <div class="col mb-3">
-                  <label for="validationDefault05">Program</label>
-                  <input type="text" class="form-control" id="validationDefault05" value="{{$athlete->program}}" name="program" required>
-                </div> 
+                <label for="validationDefault04">Program</label>
+                <select class="custom-select" id="validationDefault04" value="{{$athlete->program}}" name="program" required>
+                  
+                  <option hidden selected value="{{$athlete->program}}">{{$athlete->program}}</option>
+
+                  @foreach ($programs as $program)
+                  <option value="{{$program->name}}">{{$program->name}}</option>
+
+              @endforeach
+                                                      
+                </select>
+              </div>
           
                 <div class="col mb-3">
                   <label for="validationDefault03">Team</label>
@@ -166,7 +180,7 @@
         <div class="form-row">
           <div class="col text-center mt-3">
             <a href="{{route('athletes.index')}}" class="btn btn-danger col-4 mb-3">Cancel</a>
-            <button type="submit" class="btn btn-primary col-4 mb-3">Create</button>                   
+            <button type="submit" class="btn btn-primary col-4 mb-3">Update</button>                   
 
           </div>
          
@@ -175,10 +189,7 @@
 
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </div>
+        
       </div>
     </form>
     </div>

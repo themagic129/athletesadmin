@@ -25,7 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('athletes', 'AthletesController');
 
 Route::resource('coaches', 'CoachController');
+Route::resource('programs', 'ProgramController');
 
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
-Route::get('/searchuser', 'CoachController@searchUser')->name('searchuser');
+Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchuser');
 

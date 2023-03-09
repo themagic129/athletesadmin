@@ -128,8 +128,12 @@
                       <div class="col mb-3">
                         <label for="validationDefault04">Coach/Trainer</label>
                         <select class="custom-select" id="validationDefault04" name="coach_trainer_id" required>
-                          <option selected disabled value="">Seleccionar...</option>
-                          <option selected disabled value="">Many</option>
+                          <option selected disabled value="">Select...</option>
+                          @foreach ($coaches as $coach)
+
+                          <option value="{{$coach->user_id}}">{{$coach->first_name}} {{$coach->last_name}}</option>
+                            
+                          @endforeach
                                                               
                         </select>
                       </div>
@@ -140,9 +144,17 @@
                     <div class="form-row">
                      
                       <div class="col mb-3">
-                          <label for="validationDefault05">Program</label>
-                          <input type="text" class="form-control" id="validationDefault05" name="program" required>
-                        </div> 
+                        <label for="validationDefault04">Program</label>
+                        <select class="custom-select" id="validationDefault04" name="program" required>
+                          <option selected disabled value="">Select...</option>
+                          @foreach ($programs as $program)
+
+                          <option value="{{$program->name}}">{{$program->name}} <p>({{$program->description}})</p></option>
+                            
+                          @endforeach
+                                                              
+                        </select>
+                      </div>
                   
                         <div class="col mb-3">
                           <label for="validationDefault03">Team</label>

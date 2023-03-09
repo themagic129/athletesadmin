@@ -332,6 +332,12 @@ return [
                     'url'  => 'coaches',
                     'icon' => 'fas fa-chalkboard-teacher',
                 ],
+
+                [
+                    'text' => 'Programs',
+                    'url'  => 'programs',
+                    'icon' => 'fas fa-baseball-ball',
+                ],
                 
             ],
         ],
