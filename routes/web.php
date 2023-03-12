@@ -26,7 +26,7 @@ Route::resource('athletes', 'AthletesController');
 
 Route::resource('coaches', 'CoachController');
 Route::resource('programs', 'ProgramController');
+Route::resource('workouts', 'WorkoutsController');
 
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchuser');
-

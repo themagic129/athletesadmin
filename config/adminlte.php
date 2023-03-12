@@ -338,6 +338,13 @@ return [
                     'url'  => 'programs',
                     'icon' => 'fas fa-baseball-ball',
                 ],
+
+                [
+                    'text' => 'Workouts',
+                    'url'  => 'workouts',
+                    'icon' => 'fas fa-dumbbell',
+                ],
+                
                 
             ],
         ],

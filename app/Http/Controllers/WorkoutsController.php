@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Program;
+use App\Models\Workout;
 use Illuminate\Http\Request;
 
-class ProgramController extends Controller
+class WorkoutsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,11 @@ class ProgramController extends Controller
      */
     public function index(Request $request)
     {
+        $workouts = Workout::all();
+        $programs = Program::all();
         $q = $request->input('q');
-        $programs = Program::where('name', 'like', "%$q%")->paginate(7);
-
-        return view('programs.index', compact('programs'));
+        $workouts = Workout::where('name', 'like', "%$q%")->paginate(7);
+        return view('workouts.index', compact('workouts', 'programs'));
     }
 
     /**
@@ -29,9 +31,8 @@ class ProgramController extends Controller
     {
         $programs = Program::all();
         $q = $request->input('q');
-        $programs = Program::all();
-
-        return view('programs.create', compact('programs'));
+        $workouts = Workout::where('name', 'like', "%$q%");
+        return view('workout.create', compact('workouts', 'programs'));
     }
 
     /**
@@ -42,13 +43,14 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $programs = new Program();
-        $programs->name = $request->input('name');
-        $programs->description = $request->input('description');
-        $programs->save();
-        session()->flash('message', 'Program added successfully!');
+        $workouts = new Workout();
 
-        return redirect('programs');
+        $workouts->program_id = $request->input('program_id');
+        $workouts->name = $request->input('name');
+        $workouts->description = $request->input('description');
+        $workouts->save();
+        session()->flash('message', 'Workout added successfully!');
+        return redirect('workouts');
     }
 
     /**
@@ -71,8 +73,9 @@ class ProgramController extends Controller
     public function edit($id)
     {
         $programs = Program::all();
+        $workouts = Workout::all();
 
-        return view('programs.edit', compact('programs'));
+        return view('workouts.edit', compact('programs', 'workouts'));
     }
 
     /**
@@ -95,11 +98,6 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        $programs = Program::where('id', $id);
-        if ($programs) {
-            $programs->delete();
-        }
-
-        return redirect('programs');
+        //
     }
 }

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Programs')
+@section('title', 'Workouts')
 
 @section('content_header')
 
@@ -17,7 +17,7 @@
                 <!-- Tarjeta Contenedora de la tabla -->
                 <div class="card mt-2">
                     <div class="card-header">
-                        <h5 class="ml-2">Manage Programs</h5>
+                        <h5 class="ml-2">Manage Workouts</h5>
                         <div class="container-fluid mt-2">
                             <div class="row">
                                 <div class="col">
@@ -29,7 +29,7 @@
 
                                                 <div class="col d-flex">
                                                     <!-- Form Busqueda -->
-                                                    <form action="{{ route('programs.index') }}" method="GET"
+                                                    <form action="{{ route('workouts.index') }}" method="GET"
                                                         class="form-inline my-2 my-lg-0">
 
                                                         @csrf
@@ -42,8 +42,8 @@
                                                     </form>
 
                                                     <button type="button" class="btn btn-info ml-2" data-bs-toggle="modal"
-                                                        data-bs-target="#program-modal">
-                                                        Create Program
+                                                        data-bs-target="#workout-modal">
+                                                        Create Workout
                                                     </button>
 
 
@@ -65,7 +65,7 @@
                     <div class="card-body" style="margin-top: -0.5rem !important;">
 
 
-                        @if (count($programs) == 0)
+                        @if (count($workouts) == 0)
                             <p class="text-center">No data to display</p>
                         @else
                             <table class="table text-center">
@@ -75,38 +75,38 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Program</th>
                                         <th>Description</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($programs as $program)
+                                    @foreach ($workouts as $workout)
                                         <tr>
-                                            <td>{{ $program->id }}</td>
-                                            <td>{{ $program->name }}</td>
-                                            <td>{{ $program->description }}</td>
-
-
+                                            <td>{{ $workout->id }}</td>
+                                            <td>{{ $workout->name }}</td>
+                                            <td>{{ $workout->programs->name }}</td>
+                                            <td>{{ $workout->description }}</td>
                                             <td>
 
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $program->id }}">
+                                                    data-target="#modal-edit-{{ $workout->id }}">
                                                     Edit
                                                 </button>
 
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-danger btn-md" data-toggle="modal"
-                                                    data-target="#modal-delete-{{ $program->id }}">
+                                                    data-target="#modal-delete-{{ $workout->id }}">
                                                     Delete
                                                 </button>
 
                                             </td>
                                         </tr>
-                                        @include('programs.destroy')
-                                        @include('programs.edit')
-                                        @include('programs.create')
+                                        @include('workouts.destroy')
+                                        @include('workouts.edit')
+                                        @include('workouts.create')
                                     @endforeach
                         @endif
                         </tbody>

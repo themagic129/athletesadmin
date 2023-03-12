@@ -30,10 +30,11 @@ class AthletesController extends Controller
     public function searchUser(Request $request){
 
         $athletes = Athlete::all();
+        $programs = Program::all();
         $coaches = coaches_trainers::all();
         $q = $request->input('q');
         $users = User::where('email','like', "%$q%")->paginate(1);        
-        return view('athletes.create', compact('athletes','users','coaches'));
+        return view('athletes.create', compact('athletes','users','coaches','programs'));
 
     }
 
@@ -76,6 +77,7 @@ class AthletesController extends Controller
         $athlete->phone = $request->input('phone');        
         $athlete->email = $request->input('email');
         $athlete->profile_photo = $request->input('profile_photo');
+        
 
         $athlete->save();
 
