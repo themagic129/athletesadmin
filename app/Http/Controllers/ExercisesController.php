@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Program;
-use App\Models\Workout;
+use App\Models\coaches_trainers;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 
-class WorkoutsController extends Controller
+class ExercisesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,9 @@ class WorkoutsController extends Controller
      */
     public function index(Request $request)
     {
-
-        $programs = Program::all();
         $q = $request->input('q');
-        $workouts = Workout::where('name', 'like', "%$q%")->paginate(7);
-        return view('workouts.index', compact('workouts', 'programs'));
+        $exercises = Exercise::where('name', 'like', "%$q%")->paginate(7);
+        return view('exercises.index', compact('exercises'));
     }
 
     /**
@@ -29,10 +27,11 @@ class WorkoutsController extends Controller
      */
     public function create(Request $request)
     {
-        $programs = Program::all();
+        $exercises = Exercise::all();
         $q = $request->input('q');
-        $workouts = Workout::where('name', 'like', "%$q%");
-        return view('workout.create', compact('workouts', 'programs'));
+        $exercises = Exercise::all();
+
+        return view('exercises.create', compact('exercises'));
     }
 
     /**
@@ -43,14 +42,13 @@ class WorkoutsController extends Controller
      */
     public function store(Request $request)
     {
-        $workouts = new Workout();
+        $exercises = new Exercise();
+        $exercises->name = $request->input('name');
+        $exercises->description = $request->input('description');
+        $exercises->save();
+        session()->flash('message', 'Exercise added successfully!');
 
-        $workouts->program_id = $request->input('program_id');
-        $workouts->name = $request->input('name');
-        $workouts->description = $request->input('description');
-        $workouts->save();
-        session()->flash('message', 'Workout added successfully!');
-        return redirect('workouts');
+        return redirect('exercises');
     }
 
     /**
@@ -72,10 +70,10 @@ class WorkoutsController extends Controller
      */
     public function edit($id)
     {
-        $programs = Program::all();
-        $workouts = Workout::all();
+        $exercises = Exercise::all();
 
-        return view('workouts.edit', compact('programs', 'workouts'));
+
+        return view('exercises.edit', compact('exercises'));
     }
 
     /**
@@ -87,7 +85,13 @@ class WorkoutsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $exercises = Exercise::findOrFail($id);
+        $exercises->name = $request->input('name');
+        $exercises->description = $request->input('description');
+        $exercises->save();
+        session()->flash('message', 'Exercise updated successfully!');
+        return redirect('exercises');
     }
 
     /**
@@ -98,6 +102,11 @@ class WorkoutsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $exercises = Exercise::where('id', $id);
+        if ($exercises) {
+            $exercises->delete();
+        }
+
+        return redirect('exercises');
     }
 }

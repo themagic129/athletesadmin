@@ -5,7 +5,7 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
 
-        <form action="{{ route('programs.update', $workout->id) }}" method="post">
+        <form action="{{ route('workouts.update', $workout->id) }}" method="post">
 
             @csrf
             @method('PUT')
@@ -25,14 +25,14 @@
 
                         <div class="col mb-3">
                             <label for="validationDefault02">Name</label>
-                            <input type="text" class="form-control" id="validationDefault02" value=""
-                                name="name" required>
+                            <input type="text" class="form-control" id="validationDefault02"
+                                value="{{ $workout->name }}" name="name" required>
                         </div>
 
                         <div class="col mb-3">
                             <label for="validationDefault02">Description</label>
-                            <input type="text" class="form-control" id="validationDefault02" value=""
-                                name="description" required>
+                            <input type="text" class="form-control" id="validationDefault02"
+                                value="{{ $workout->description }}" name="description" required>
                         </div>
 
 

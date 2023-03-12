@@ -17,23 +17,23 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = ['id','name','email','password', 'role_id'];
+    protected $fillable = ['id', 'name', 'email', 'password', 'role_id'];
 
-    public function roles(){
+    public function roles()
+    {
 
         return $this->belongsTo(Role::class);
-        
     }
 
-    public function athletes(){
+    public function athletes()
+    {
 
         return $this->belongsTo(Athlete::class);
-        
     }
 
 
 
-  
+
     /**
      * The attributes that should be hidden for serialization.
      *

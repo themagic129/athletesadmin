@@ -13,7 +13,25 @@
 
         <div class="row">
             <div class="col">
-
+                @if (session()->has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session()->get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <script>
+                            window.onload = function() {
+                                setTimeout(function() {
+                                    var alert = document.querySelector('.alert');
+                                    alert.style.opacity = 0;
+                                    setTimeout(function() {
+                                        alert.style.display = 'none';
+                                    }, 500);
+                                }, 3000);
+                            };
+                        </script>
+                    </div>
+                @endif
                 <!-- Tarjeta Contenedora de la tabla -->
                 <div class="card mt-2">
                     <div class="card-header">
@@ -113,7 +131,7 @@
                         </table>
 
                         <!-- Fin Tabla Productos -->
-
+                        {{ $workouts->links() }}
 
                     </div>
                     <div class="card-footer text-muted">

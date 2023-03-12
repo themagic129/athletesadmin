@@ -311,15 +311,15 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-       
+
         ['header' => 'account_settings'],
-       
-       
+
+
         [
             'text'    => 'Dashboard',
             'icon'    => 'fas fa-tachometer-alt',
             'classes'  => 'bg-primary',
-            
+
             'submenu' => [
                 [
                     'text' => 'Athletes',
@@ -344,11 +344,17 @@ return [
                     'url'  => 'workouts',
                     'icon' => 'fas fa-dumbbell',
                 ],
-                
-                
+
+                [
+                    'text' => 'Exercises',
+                    'url'  => 'exercises',
+                    'icon' => 'fas fa-swimmer',
+                ],
+
+
             ],
         ],
-       
+
     ],
 
     /*
