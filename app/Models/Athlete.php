@@ -11,12 +11,12 @@ class Athlete extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','organization','team','coach_trainer_id','program','first_name','last_name','birthday','height','weight','bats','throws','phone','email','profile_photo'];
+    protected $fillable = ['user_id', 'organization', 'team', 'coach_trainer_id', 'program', 'first_name', 'last_name', 'birthday', 'height', 'weight', 'bats', 'throws', 'phone', 'email', 'profile_photo'];
 
-    public function users(){
+    public function users()
+    {
 
         return $this->belongsTo(User::class);
-
     }
 
     public function coach_trainer()
@@ -27,8 +27,8 @@ class Athlete extends Model
     public $timestamps = false;
     protected $primaryKey = 'user_id';
 
-
-
-
-
+    public function setBirthdayAttribute($value)
+    {
+        $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    }
 }

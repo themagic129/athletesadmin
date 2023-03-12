@@ -69,6 +69,7 @@ class AthletesController extends Controller
         $athlete->coach_trainer_id = $request->input('coach_trainer_id');
         $athlete->program = $request->input('program');
         $athlete->team = $request->input('team');
+        $athlete->birthday = $request->input('birthday');
         $athlete->height = $request->input('height');
         $athlete->weight = $request->input('weight');
         $athlete->bats = $request->input('bats');
