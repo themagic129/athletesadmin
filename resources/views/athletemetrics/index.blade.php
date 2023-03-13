@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Athletes')
+@section('title', 'Athlete Metrics')
 
 @section('content_header')
 
@@ -32,48 +32,38 @@
                         </script>
                     </div>
                 @endif
-
-
                 <!-- Tarjeta Contenedora de la tabla -->
                 <div class="card mt-2">
                     <div class="card-header">
-                        <h5 class="ml-2">Manage Athletes</h5>
+                        <h5 class="ml-2">Athlete Metrics</h5>
                         <div class="container-fluid mt-2">
                             <div class="row">
                                 <div class="col">
                                     <div class="card mt-1">
                                         <div class="card-body">
 
-                                            <!-- Button trigger modal
-
-                                                    <div class="row">
-                                                    <div class="col-2">
-                                                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#testmodal">
-                                                        Agregar Producto
-                                                      </button>
-                                                   
-                                                    </div>
-                                                     -->
-
                                             <div class="row">
-
 
                                                 <div class="col d-flex">
                                                     <!-- Form Busqueda -->
-                                                    <form action="{{ route('athletes.index') }}" method="GET"
+                                                    <form action="{{ route('athletemetrics.index') }}" method="GET"
                                                         class="form-inline my-2 my-lg-0">
 
                                                         @csrf
 
-                                                        <input class="form-control mr-sm-2" placeholder="Athlete Name"
+                                                        <input class="form-control mr-sm-2" placeholder="Program Name"
                                                             name="q">
                                                         <button type="submit"
                                                             class="btn btn-primary my-2 my-sm-0">Search</button>
 
                                                     </form>
 
-                                                    <a href="{{ route('athletes.create') }}"
-                                                        class="btn btn-info ml-2">Create Athlete</a>
+
+                                                    <a href="{{ route('athletemetrics.create') }}"
+                                                        class="btn btn-info ml-2">Add
+                                                        Athlete Metric</a>
+
+
 
                                                 </div>
 
@@ -93,7 +83,7 @@
                     <div class="card-body" style="margin-top: -0.5rem !important;">
 
 
-                        @if (count($athletes) == 0)
+                        @if (count($athletemetrics) == 0)
                             <p class="text-center">No data to display</p>
                         @else
                             <table class="table text-center">
@@ -102,71 +92,57 @@
 
                                     <tr>
                                         <th>ID</th>
-                                        <th>Organization</th>
-                                        <th>Team</th>
-                                        <th>Coach</th>
-                                        <th>Program</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Birthday</th>
-                                        <th>Height</th>
-                                        <th>Weight</th>
-                                        <th>Bats</th>
-                                        <th>Throws</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Profile Photo</th>
+                                        <th>Athlete</th>
+                                        <th>Max. Velocity</th>
+                                        <th>Max. Throwing Vel.</th>
+                                        <th>Blast Plane Score</th>
+                                        <th>Blast Connection Score</th>
+                                        <th>Blast Rotation Score</th>
+                                        <th>Max Fb. Spin Rate</th>
+                                        <th>Ave. Fb. Spin Rate</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                    @foreach ($athletes as $athlete)
+                                    @foreach ($athletemetrics as $athletemetric)
                                         <tr>
-                                            <td>{{ $athlete->user_id }}</td>
-                                            <td>{{ $athlete->organization }}</td>
-                                            <td>{{ $athlete->team }}</td>
-                                            <td>{{ $athlete->coach_trainer->first_name }}
-                                                {{ $athlete->coach_trainer->last_name }}</td>
-                                            <td>{{ $athlete->program }}</td>
-                                            <td>{{ $athlete->first_name }}</td>
-                                            <td>{{ $athlete->last_name }}</td>
-                                            <td>{{ $athlete->birthday }}</td>
-                                            <td>{{ $athlete->height }}</td>
-                                            <td>{{ $athlete->weight }}</td>
-                                            <td>{{ $athlete->bats }}</td>
-                                            <td>{{ $athlete->throws }}</td>
-                                            <td>{{ $athlete->phone }}</td>
-                                            <td>{{ $athlete->email }}</td>
-                                            <td>{{ $athlete->profile_photo }}</td>
-
+                                            <td>{{ $athletemetric->id }}</td>
+                                            <td>{{ $athletemetric->athlete->first_name }}
+                                                {{ $athletemetric->athlete->last_name }}</td>
+                                            <td>{{ $athletemetric->max_velocity }}</td>
+                                            <td>{{ $athletemetric->max_throwing_velocity }}</td>
+                                            <td>{{ $athletemetric->blast_plane_score }}</td>
+                                            <td>{{ $athletemetric->blast_connection_score }}</td>
+                                            <td>{{ $athletemetric->blast_rotation_score }}</td>
+                                            <td>{{ $athletemetric->max_fb_spin_rate }}</td>
+                                            <td>{{ $athletemetric->ave_fb_spin_rate }}</td>
 
                                             <td>
 
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $athlete->user_id }}">
+                                                    data-target="#modal-edit-{{ $athletemetric->id }}">
                                                     Edit
                                                 </button>
 
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-danger btn-md" data-toggle="modal"
-                                                    data-target="#modal-delete-{{ $athlete->user_id }}">
+                                                    data-target="#modal-delete-{{ $athletemetric->id }}">
                                                     Delete
                                                 </button>
 
                                             </td>
                                         </tr>
-                                        @include('athletes.destroy')
-                                        @include('athletes.edit')
+                                        @include('athletemetrics.destroy')
+                                        @include('athletemetrics.edit')
                                     @endforeach
                         @endif
                         </tbody>
                         </table>
 
                         <!-- Fin Tabla Productos -->
-
+                        {{ $athletemetrics->links() }}
 
                     </div>
                     <div class="card-footer text-muted">

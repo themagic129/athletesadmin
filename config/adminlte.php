@@ -351,6 +351,12 @@ return [
                     'icon' => 'fas fa-swimmer',
                 ],
 
+                [
+                    'text' => 'Athlete Metrics',
+                    'url'  => 'athletemetrics',
+                    'icon' => 'fas fa-chart-area',
+                ],
+
 
             ],
         ],

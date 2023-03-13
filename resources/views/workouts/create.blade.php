@@ -42,7 +42,7 @@
 
                     <div class="form-row">
                         <div class="col text-center mt-3">
-                            <a href="{{ route('programs.index') }}" class="btn btn-danger col-4 mb-3">Cancel</a>
+                            <a href="{{ route('workouts.index') }}" class="btn btn-danger col-4 mb-3">Cancel</a>
                             <button type="submit" class="btn btn-primary col-4 mb-3">Create</button>
 
                         </div>

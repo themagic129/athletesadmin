@@ -31,4 +31,10 @@ class Athlete extends Model
     {
         $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
+
+    public function athletemetric()
+    {
+
+        return $this->hasMany(Athlete::class, 'athlete_id');
+    }
 }
