@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -19,11 +21,6 @@ class User extends Authenticatable
      */
     protected $fillable = ['id', 'name', 'email', 'password', 'role_id'];
 
-    public function roles()
-    {
-
-        return $this->belongsTo(Role::class);
-    }
 
     public function athletes()
     {

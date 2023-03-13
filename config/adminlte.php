@@ -331,6 +331,7 @@ return [
                     'text' => 'Coaches',
                     'url'  => 'coaches',
                     'icon' => 'fas fa-chalkboard-teacher',
+                    'can'  => 'full_access'
                 ],
 
                 [

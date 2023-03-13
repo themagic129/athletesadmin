@@ -38,6 +38,9 @@
                 <div class="card mt-2">
                     <div class="card-header">
                         <h5 class="ml-2">Manage Athletes</h5>
+
+
+
                         <div class="container-fluid mt-2">
                             <div class="row">
                                 <div class="col">
@@ -46,14 +49,14 @@
 
                                             <!-- Button trigger modal
 
-                                                    <div class="row">
-                                                    <div class="col-2">
-                                                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#testmodal">
-                                                        Agregar Producto
-                                                      </button>
-                                                   
-                                                    </div>
-                                                     -->
+                                                                                <div class="row">
+                                                                                <div class="col-2">
+                                                                                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#testmodal">
+                                                                                    Agregar Producto
+                                                                                  </button>
+                                                                               
+                                                                                </div>
+                                                                                 -->
 
                                             <div class="row">
 
