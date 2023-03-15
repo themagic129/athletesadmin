@@ -9,6 +9,15 @@
 <!--Content main-->
 @section('content')
 
+    <!-- Profile Photo Size animation -->
+    <style>
+        .enlarge {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+    </style>
+
     <div class="container col-12">
 
         <div class="row">
@@ -39,8 +48,6 @@
                     <div class="card-header">
                         <h5 class="ml-2">Manage Athletes</h5>
 
-
-
                         <div class="container-fluid mt-2">
                             <div class="row">
                                 <div class="col">
@@ -48,15 +55,7 @@
                                         <div class="card-body">
 
                                             <!-- Button trigger modal
-
-                                                                                <div class="row">
-                                                                                <div class="col-2">
-                                                                                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#testmodal">
-                                                                                    Agregar Producto
-                                                                                  </button>
-                                                                               
-                                                                                </div>
-                                                                                 -->
+                                                                                                                                                                                      -->
 
                                             <div class="row">
 
@@ -99,7 +98,7 @@
                         @if (count($athletes) == 0)
                             <p class="text-center">No data to display</p>
                         @else
-                            <table class="table text-center">
+                            <table class="table">
 
                                 <thead class="thead-dark">
 
@@ -142,11 +141,9 @@
                                             <td>{{ $athlete->throws }}</td>
                                             <td>{{ $athlete->phone }}</td>
                                             <td>{{ $athlete->email }}</td>
-                                            <td>{{ $athlete->profile_photo }}</td>
-
-
+                                            <td><img src="{{ asset('storage/images/' . $athlete->profile_photo) }}"
+                                                    width="80px" height="100px" class="enlarge"></td>
                                             <td>
-
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal"
                                                     data-target="#modal-edit-{{ $athlete->user_id }}">
@@ -214,5 +211,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @stop

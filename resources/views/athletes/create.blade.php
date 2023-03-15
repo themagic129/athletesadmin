@@ -40,7 +40,7 @@
                                             <div class="form-row mb-2">
 
                                                 <form action="{{ route('searchuser') }}" method="GET"
-                                                    class="form-inline my-2 my-lg-0">
+                                                    class="form-inline my-2 my-lg-0" enctype="multipart/form-data">
 
                                                     @csrf
 
@@ -101,7 +101,7 @@
 
 
 
-                            <form action="{{ route('athletes.store') }}" method="post">
+                            <form action="{{ route('athletes.store') }}" method="post" enctype="multipart/form-data">
 
                                 @csrf
 
@@ -264,18 +264,16 @@
 
                                 </div>
 
+
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="customFile">Profile Photo</label>
+                                        <label for="customFile" class="form-label">Profile Photo</label>
                                         <div class="custom-file">
-
                                             <input type="file" class="custom-file-input" id="customFile"
-                                                name="profile_photo">
+                                                name="image">
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
-
                                     </div>
-
                                 </div>
 
                         </div>
@@ -340,6 +338,13 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
     <script>
         $('.btn-enviar').click(function() {

@@ -119,6 +119,11 @@ class AthleteMetricsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $athletemetrics = AthleteMetric::where('id', $id);
+        if ($athletemetrics) {
+            $athletemetrics->delete();
+        }
+
+        return redirect('athletemetrics');
     }
 }

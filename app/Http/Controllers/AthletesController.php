@@ -9,6 +9,7 @@ use App\Models\Program;
 use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AthletesController extends Controller
 {
@@ -24,6 +25,7 @@ class AthletesController extends Controller
         $athletes = Athlete::where('first_name', 'like', "%$q%")->paginate(7);
         $coaches = coaches_trainers::all();
         $users = User::where('email', 'like', "%$q%")->paginate(1);
+
         return view('athletes.index', compact('athletes', 'users', 'coaches', 'programs'));
     }
 
@@ -76,10 +78,21 @@ class AthletesController extends Controller
         $athlete->throws = $request->input('throws');
         $athlete->phone = $request->input('phone');
         $athlete->email = $request->input('email');
-        $athlete->profile_photo = $request->input('profile_photo');
+
+        $size = $request->file('image')->getSize();
+        $name = $request->file('image')->getClientOriginalName();
+
+        $request->file('image')->storeAs('public/images/', $name);
+
+        $athlete->profile_photo = $name;
+        //$photo = new ProfilePhoto();
+        //$photo->name = $name;
+        //$photo->size = $size;
+        //$photo->save();
 
 
         $athlete->save();
+
 
         session()->flash('message', 'Athlete added successfully!');
 
