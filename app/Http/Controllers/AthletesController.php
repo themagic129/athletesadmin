@@ -149,7 +149,7 @@ class AthletesController extends Controller
         $athlete->email = $request->input('email');
         $athlete->profile_photo = $request->input('profile_photo');
         $athlete->save();
-        session()->flash('message', 'Producto actualizado con éxito!');
+        session()->flash('message', 'Athlete updated successfully!');
         return redirect('athletes');
     }
 
@@ -161,11 +161,20 @@ class AthletesController extends Controller
      */
     public function destroy($user_id)
     {
-        $athlete = Athlete::where('user_id', $user_id);
-        if ($athlete) {
-            $athlete->delete();
-        }
+        try {
+            // Buscar el atleta a eliminar
+            $athlete = Athlete::where('user_id', $user_id);
 
+            // Intentar eliminar el atleta
+            $athlete->delete();
+
+            return redirect()->route('athletes.index')
+                ->with('success', 'El atleta se eliminó exitosamente');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Si hay un error de integridad referencial
+            return redirect()->route('athletes.index')
+                ->with('error', 'Unable to delete the selected athlete as there are an athlete metric assigned to him!');
+        }
         return redirect('athletes');
     }
 }

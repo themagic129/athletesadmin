@@ -35,6 +35,6 @@ class Athlete extends Model
     public function athletemetric()
     {
 
-        return $this->hasMany(Athlete::class, 'athlete_id');
+        return $this->hasMany(AthleteMetric::class, 'athlete_id');
     }
 }

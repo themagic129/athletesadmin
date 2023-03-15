@@ -96,7 +96,9 @@ class AthleteMetricsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $athletemetrics = AthleteMetric::all();
+
+        return view('athletemetrics.edit', compact('athletemetrics'));
     }
 
     /**
@@ -108,7 +110,20 @@ class AthleteMetricsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $athletemetrics = AthleteMetric::findOrFail($id);
+
+
+        $athletemetrics->max_velocity = $request->input('max_velocity');
+        $athletemetrics->max_throwing_velocity = $request->input('max_throwing_velocity');
+        $athletemetrics->blast_plane_score = $request->input('blast_plane_score');
+        $athletemetrics->blast_connection_score = $request->input('blast_connection_score');
+        $athletemetrics->blast_rotation_score = $request->input('blast_rotation_score');
+        $athletemetrics->max_fb_spin_rate = $request->input('max_fb_spin_rate');
+        $athletemetrics->ave_fb_spin_rate = $request->input('ave_fb_spin_rate');
+        $athletemetrics->save();
+        session()->flash('message', 'Athlete Metric updated successfully!');
+        return redirect('athletemetrics');
     }
 
     /**
@@ -120,6 +135,8 @@ class AthleteMetricsController extends Controller
     public function destroy($id)
     {
         $athletemetrics = AthleteMetric::where('id', $id);
+
+
         if ($athletemetrics) {
             $athletemetrics->delete();
         }

@@ -42,6 +42,12 @@
                     </div>
                 @endif
 
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
 
                 <!-- Tarjeta Contenedora de la tabla -->
                 <div class="card mt-2">
@@ -55,7 +61,7 @@
                                         <div class="card-body">
 
                                             <!-- Button trigger modal
-                                                                                                                                                                                      -->
+                                                                                                                                                                                                      -->
 
                                             <div class="row">
 

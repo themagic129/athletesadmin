@@ -98,6 +98,11 @@ class WorkoutsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $workouts = Workout::where('id', $id);
+        if ($workouts) {
+            $workouts->delete();
+        }
+
+        return redirect('workouts');
     }
 }
