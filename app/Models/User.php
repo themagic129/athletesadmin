@@ -25,7 +25,7 @@ class User extends Authenticatable
     public function athletes()
     {
 
-        return $this->belongsTo(Athlete::class);
+        return $this->hasMany(Athlete::class);
     }
 
 

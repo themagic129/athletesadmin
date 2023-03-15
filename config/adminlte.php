@@ -358,6 +358,12 @@ return [
                     'icon' => 'fas fa-chart-area',
                 ],
 
+                [
+                    'text' => 'My Profile',
+                    'url'  => 'my-profile',
+                    'icon' => 'fas fa-chart-area',
+                ],
+
 
             ],
         ],

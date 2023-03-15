@@ -33,3 +33,5 @@ Route::resource('athletemetrics', 'AthleteMetricsController');
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 Route::get('/searchathlete', 'AthleteMetricsController@searchAthlete')->name('searchathlete');
 Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchuser');
+
+Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middleware('auth');
