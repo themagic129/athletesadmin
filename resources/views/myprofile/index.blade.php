@@ -40,26 +40,90 @@
                     </div>
                 @endif
 
-
-                <!-- My profile -->
-
-
-                <h1>My Profile</h1>
-                <p><strong>Name:</strong> {{ $user->name }}</p>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
-                <p><strong>Created at:</strong> {{ $user->created_at }}</p>
-                <p><strong>Updated at:</strong> {{ $user->updated_at }}</p>
-                <p><strong>Updated at:</strong> {{ $user->updated_at }}</p>
-
-
                 @foreach ($athlete as $athlet)
-                    <p><img src="{{ asset('storage/images/' . $athlet->profile_photo) }}" width="80px" height="100px"
-                            class="enlarge"></p>
                 @endforeach
 
 
+                <div class="card mt-4">
+                    <h5 class="card-header">My Profile</h5>
+                    <div class="card-body">
+
+                        <div class="myinfo">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-2">
+
+                                        <div class="image-container">
+                                            <img class="image-container"
+                                                src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
+                                        </div>
+
+                                        <h6 class="ml-4 mt-2 lead">{{ $athlet->first_name }} {{ $athlet->last_name }}</h6>
+
+                                    </div>
+
+                                    <div class="col-2 mt-4">
+                                        <div class="editprofile">
+
+                                            <div class="card text-center" style="width: 18rem;">
+                                                <div class="card-header">
+                                                    Actions
+                                                </div>
+
+                                                <a href=""
+                                                    class="btn btn-primary col-8 ml-auto mr-auto mt-2 mb-2 text-center">Edit
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+
+
             </div>
+
+
+
         </div>
+
+
+    </div>
+
+    <!--<div class="row">
+                                                                                                                                                                                                                                                                                                                                <div class="text-center">
+                                                                                                                                                                                                                                                                                                                                <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
+                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                </div>-->
+
+
+    </div>
+
+
+
+    </div>
+
+
+    </div>
+    </div>
 
 
     </div>
@@ -73,6 +137,16 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        .image-container {
+
+            width: 150px;
+            height: 220px;
+            border-radius: 100px
+        }
+    </style>
+
+
 @stop
 
 @section('js')
