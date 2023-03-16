@@ -44,56 +44,121 @@
                 @endforeach
 
 
+
                 <div class="card mt-4">
                     <h5 class="card-header">My Profile</h5>
                     <div class="card-body">
+
 
                         <div class="myinfo">
 
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-2 mr-4">
 
-                                        <div class="image-container">
-                                            <img class="image-container"
-                                                src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
-                                        </div>
-
-                                        <h6 class="ml-4 mt-2 lead">{{ $athlet->first_name }} {{ $athlet->last_name }}</h6>
-
-                                    </div>
-
-                                    <div class="col-2 mt-4">
-                                        <div class="editprofile">
-
-                                            <div class="card text-center" style="width: 18rem;">
-                                                <div class="card-header">
-                                                    Actions
-                                                </div>
-
-                                                <a href=""
-                                                    class="btn btn-primary col-8 ml-auto mr-auto mt-2 mb-2 text-center">Edit
-                                                </a>
-
+                                        <div class="container text-center" id="information">
+                                            <div class="image-container">
+                                                <img class="image-container"
+                                                    src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
                                             </div>
 
+                                            <h6 class="mt-2 lead">{{ $athlet->first_name }} {{ $athlet->last_name }}</h6>
                                         </div>
                                     </div>
 
+                                    <div class="col-2 mt-4 mr-4">
+                                        <a href=""
+                                            class="btn btn-outline-success col-8 ml-auto mr-auto mt-2 mb-2 text-center">Edit
+                                            Profile
+                                        </a>
+                                    </div>
+
+                                    <div class="col-6 mt-4">
+                                        <h5 class="card-header">Personal Information</h5>
+                                        <table class="table table-borderless">
+
+                                            <tbody>
+
+                                                <tr>
+
+                                                    <td>
+
+                                                        <p><b>ID</b></p>
+                                                        <p class="text-muted">{{ $athlet->user_id }}</p>
+
+                                                        <p><b>Name:</b></p>
+                                                        <p class="text-muted">{{ $athlet->first_name }}
+                                                            {{ $athlet->last_name }}</p>
+
+                                                        <p><b>Birthday:</b></p>
+                                                        <p class="text-muted">{{ $athlet->birthday }}</p>
+
+                                                        <p><b>Phone:</b></p>
+                                                        <p class="text-muted">{{ $athlet->phone }}</p>
+
+                                                        <p><b>Email:</b></p>
+                                                        <p class="text-muted">{{ $athlet->email }}</p>
 
 
+                                                    </td>
 
+
+                                                    <td>
+
+                                                        <p><b>Organization</b></p>
+                                                        <p class="text-muted">{{ $athlet->organization }}</p>
+
+                                                        <p><b>Team:</b></p>
+                                                        <p class="text-muted">{{ $athlet->team }}</p>
+
+                                                        <p><b>Assigned Trainer:</b></p>
+                                                        <p class="text-muted">{{ $athlet->coach_trainer->first_name }}
+                                                            {{ $athlet->coach_trainer->last_name }}</p>
+
+                                                        <p><b>Program:</b></p>
+                                                        <p class="text-muted">{{ $athlet->program }}</p>
+
+                                                        <p><b>Height:</b></p>
+                                                        <p class="text-muted">{{ $athlet->height }}</p>
+
+                                                    </td>
+
+                                                    <td>
+                                                        <p><b>Weight:</b></p>
+                                                        <p class="text-muted">{{ $athlet->weight }}</p>
+
+                                                        <p><b>Bats:</b></p>
+                                                        <p class="text-muted">{{ $athlet->bats }}</p>
+
+                                                        <p><b>Throws:</b></p>
+                                                        <p class="text-muted">{{ $athlet->throws }}</p>
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
+
                             </div>
 
 
                         </div>
 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional
+                                        content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
 
@@ -109,10 +174,10 @@
     </div>
 
     <!--<div class="row">
-                                                                                                                                                                                                                                                                                                                                <div class="text-center">
-                                                                                                                                                                                                                                                                                                                                <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
-                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                </div>-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="text-center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>-->
 
 
     </div>

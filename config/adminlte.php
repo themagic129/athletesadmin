@@ -321,6 +321,13 @@ return [
             'classes'  => 'bg-primary',
 
             'submenu' => [
+
+                [
+                    'text' => 'My Profile',
+                    'url'  => 'my-profile',
+                    'icon' => 'fas fa-chart-area',
+                ],
+
                 [
                     'text' => 'Athletes',
                     'url'  => 'athletes',
@@ -358,11 +365,7 @@ return [
                     'icon' => 'fas fa-chart-area',
                 ],
 
-                [
-                    'text' => 'My Profile',
-                    'url'  => 'my-profile',
-                    'icon' => 'fas fa-chart-area',
-                ],
+
 
 
             ],

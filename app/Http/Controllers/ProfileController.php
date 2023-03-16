@@ -12,6 +12,8 @@ class ProfileController extends Controller
 
         $athlete = $user->athletes;
 
+
+
         return view('myprofile.index', compact('user', 'athlete'));
     }
 }
