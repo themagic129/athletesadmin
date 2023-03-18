@@ -216,7 +216,7 @@
 
                                         <label for="validationDefault04">Bats</label>
                                         <select class="custom-select" id="validationDefault04" name="bats" required>
-                                            <option selected disabled value="">Seleccionar...</option>
+                                            <option selected disabled value="">Select...</option>
                                             <option>L</option>
                                             <option>R</option>
                                             <option>B</option>

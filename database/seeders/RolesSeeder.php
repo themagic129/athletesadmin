@@ -16,12 +16,12 @@ class RolesSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::create(['name' => 'superAdmin']);
-        $permission = Permission::create(['name' => 'full_access']);
+        $role = Role::create(['name' => 'Coach']);
+        $permission = Permission::create(['name' => 'coaches']);
 
         $permission->syncRoles($role);
 
-        $user = User::find(1);
+        $user = User::find(9);
 
         $user->assignRole($role);
     }

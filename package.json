@@ -21,6 +21,8 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "fullcalendar": "^6.1.4",
+        "fullcalendar-scheduler": "^6.1.4",
         "moment": "^2.29.4"
     }
 }
