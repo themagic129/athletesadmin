@@ -326,49 +326,69 @@ return [
                     'text' => 'My Profile',
                     'url'  => 'my-profile',
                     'icon' => 'fas fa-chart-area',
+                    'can' => ['coaches', 'athletes'],
+
+
                 ],
 
                 [
                     'text' => 'Athletes',
                     'url'  => 'athletes',
                     'icon' => 'fas fa-running',
+                    'can' => ['coaches', 'full_access']
+
+
+
                 ],
 
                 [
                     'text' => 'Coaches',
                     'url'  => 'coaches',
                     'icon' => 'fas fa-chalkboard-teacher',
-                    'can'  => 'full_access'
+                    'can' => 'full_access'
+
                 ],
 
                 [
                     'text' => 'Programs',
                     'url'  => 'programs',
                     'icon' => 'fas fa-baseball-ball',
+                    'can' => 'full_access'
+
                 ],
 
                 [
                     'text' => 'Workouts',
                     'url'  => 'workouts',
                     'icon' => 'fas fa-dumbbell',
+                    'can' => ['coaches', 'full_access']
+
                 ],
 
                 [
                     'text' => 'Exercises',
                     'url'  => 'exercises',
                     'icon' => 'fas fa-swimmer',
+                    'can' => ['coaches', 'full_access']
+
                 ],
 
                 [
                     'text' => 'Schedule',
                     'url'  => 'schedule',
                     'icon' => 'fas fa-swimmer',
+                    'can' => ['coaches', 'full_access', 'athletes']
+
+
+
                 ],
 
                 [
                     'text' => 'Athlete Metrics',
                     'url'  => 'athletemetrics',
                     'icon' => 'fas fa-chart-area',
+                    'can' => ['coaches', 'full_access']
+
                 ],
 
 

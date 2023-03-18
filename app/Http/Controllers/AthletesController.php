@@ -147,7 +147,7 @@ class AthletesController extends Controller
         $athlete->throws = $request->input('throws');
         $athlete->phone = $request->input('phone');
         $athlete->email = $request->input('email');
-        $athlete->profile_photo = $request->input('profile_photo');
+        //$athlete->profile_photo = $request->input('profile_photo');
         $athlete->save();
         session()->flash('message', 'Athlete updated successfully!');
         return redirect('athletes');
