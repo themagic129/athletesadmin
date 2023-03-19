@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AthletesController;
+use App\Http\Controllers\CalenderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FullCalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::resource('athletes', 'AthletesController');
 
@@ -40,3 +42,6 @@ Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middlew
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('calendar-event', [CalenderController::class, 'index'])->name('schedule');
+Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);

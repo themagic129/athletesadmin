@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Programs')
+@section('title', 'Schedule')
 
 @section('content_header')
 
@@ -9,60 +9,23 @@
 <!--Content main-->
 @section('content')
 
-    <div class="container col-12">
+    <div class="card text-center mt-3">
+        <div class="card-header">
+            Schedule Calendar
+        </div>
+        <div class="card-body">
+            @include('schedule.calendar')
 
-        <div class="row">
-            <div class="col">
-                @if (session()->has('message'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session()->get('message') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <script>
-                            window.onload = function() {
-                                setTimeout(function() {
-                                    var alert = document.querySelector('.alert');
-                                    alert.style.opacity = 0;
-                                    setTimeout(function() {
-                                        alert.style.display = 'none';
-                                    }, 500);
-                                }, 3000);
-                            };
-                        </script>
-                    </div>
-                @endif
-
-                <div class="card text-center">
-                    <div class="card-header">
-                        Featured
-                    </div>
-                    <div class="card-body">
-
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12">
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                </div>
-
-
-
-
-
-
-            </div>
         </div>
 
-
     </div>
+
+
+
+
+
+
+
 
 
 
@@ -76,20 +39,100 @@
 @stop
 
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        console.log('Hi!');
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-    </script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.4/index.global.min.js'></script>
+        $(document).ready(function() {
+            var SITEURL = "{{ url('/') }}";
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var calendar = $('#full_calendar_events').fullCalendar({
+                editable: true,
+                editable: true,
+                events: SITEURL + "/calendar-event",
+                displayEventTime: true,
+                eventRender: function(event, element, view) {
+                    if (event.allDay === 'true') {
+                        event.allDay = true;
+                    } else {
+                        event.allDay = false;
+                    }
+                },
+                selectable: true,
+                selectHelper: true,
+                select: function(event_start, event_end, allDay) {
+                    var event_name = prompt('Event Name:');
+                    if (event_name) {
+                        var event_start = $.fullCalendar.formatDate(event_start, "Y-MM-DD HH:mm:ss");
+                        var event_end = $.fullCalendar.formatDate(event_end, "Y-MM-DD HH:mm:ss");
+                        $.ajax({
+                            url: SITEURL + "/calendar-crud-ajax",
+                            data: {
+                                event_name: event_name,
+                                event_start: event_start,
+                                event_end: event_end,
+                                type: 'create'
+                            },
+                            type: "POST",
+                            success: function(data) {
+                                displayMessage("Event created.");
+                                calendar.fullCalendar('renderEvent', {
+                                    id: data.id,
+                                    title: event_name,
+                                    start: event_start,
+                                    end: event_end,
+                                    allDay: allDay
+                                }, true);
+                                calendar.fullCalendar('unselect');
+                            }
+                        });
+                    }
+                },
+                eventDrop: function(event, delta) {
+                    var event_start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
+                    var event_end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
+                    $.ajax({
+                        url: SITEURL + '/calendar-crud-ajax',
+                        data: {
+                            title: event.event_name,
+                            start: event_start,
+                            end: event_end,
+                            id: event.id,
+                            type: 'edit'
+                        },
+                        type: "POST",
+                        success: function(response) {
+                            displayMessage("Event updated");
+                        }
+                    });
+                },
+                eventClick: function(event) {
+                    var eventDelete = confirm("Are you sure?");
+                    if (eventDelete) {
+                        $.ajax({
+                            type: "POST",
+                            url: SITEURL + '/calendar-crud-ajax',
+                            data: {
+                                id: event.id,
+                                type: 'delete'
+                            },
+                            success: function(response) {
+                                calendar.fullCalendar('removeEvents', event.id);
+                                displayMessage("Event removed");
+                            }
+                        });
+                    }
+                }
+            });
+        });
 
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        function displayMessage(message) {
+            toastr.success(message, 'Event');
+        }
+    </script>
 @stop

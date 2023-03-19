@@ -52,7 +52,7 @@
 
                                                         @csrf
 
-                                                        <input class="form-control mr-sm-2" placeholder="Program Name"
+                                                        <input class="form-control mr-sm-2" placeholder="Workout Name"
                                                             name="q">
                                                         <button type="submit"
                                                             class="btn btn-primary my-2 my-sm-0">Search</button>
