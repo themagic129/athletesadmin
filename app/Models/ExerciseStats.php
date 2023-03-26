@@ -24,6 +24,6 @@ class ExerciseStats extends Model
     public function exercises()
     {
 
-        return $this->belongsTo(ExerciseStats::class, 'exercise_id');
+        return $this->belongsTo(Exercise::class, 'exercise_id');
     }
 }

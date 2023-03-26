@@ -13,7 +13,7 @@
 
 <body>
     <div class="container" style="max-width: 700px">
-        <h2 class="h2 text-center mb-5 border-bottom pb-3">Schedule a workout or Exercise for an Athlete</h2>
+
         <div id='full_calendar_events'></div>
     </div>
     {{-- Scripts --}}

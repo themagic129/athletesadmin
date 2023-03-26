@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ExerciseStats;
 use Illuminate\Http\Request;
 
-class ExerciseStats extends Controller
+class ExercisestatsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $q = $request->input('q');
+        $exercisesstats = ExerciseStats::where('id', 'like', "%$q%")->paginate(7);
+
+        return view('exercisestats.index', compact('exercisesstats'));
     }
 
     /**
@@ -23,7 +27,7 @@ class ExerciseStats extends Controller
      */
     public function create()
     {
-        //
+        $exercisesstats = new ExerciseStats();
     }
 
     /**

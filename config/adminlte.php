@@ -362,17 +362,34 @@ return [
                 ],
 
                 [
-                    'text' => 'Exercises',
-                    'url'  => 'exercises',
-                    'icon' => 'fas fa-swimmer',
-                    'can' => ['coaches', 'full_access']
+                    'text' => 'Manage Exercises',
+                    'icon' => 'fas fa-grip-horizontal',
+                    'can' => ['coaches', 'full_access'],
+
+                    'submenu' => [
+
+                        [
+                            'text' => 'Exercises',
+                            'url' => 'exercises',
+                            'icon' => 'fas fa-swimmer',
+
+                        ],
+
+                        [
+                            'text' => 'Exercise Stats',
+                            'url' => 'exercisestats',
+                            'icon' => 'fas fa-chart-area',
+
+                        ],
+
+                    ]
 
                 ],
 
                 [
                     'text' => 'Schedule',
                     'url'  => 'schedule',
-                    'icon' => 'fas fa-swimmer',
+                    'icon' => 'fas fa-calendar-week',
                     'can' => ['coaches', 'full_access', 'athletes']
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\coaches_trainers;
 use App\Models\Exercise;
+use App\Models\ExerciseStats;
 use Illuminate\Http\Request;
 
 class ExercisesController extends Controller
@@ -46,6 +47,7 @@ class ExercisesController extends Controller
         $exercises->name = $request->input('name');
         $exercises->description = $request->input('description');
         $exercises->save();
+
         session()->flash('message', 'Exercise added successfully!');
 
         return redirect('exercises');

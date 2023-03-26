@@ -32,12 +32,14 @@ Route::resource('workouts', 'WorkoutsController');
 Route::resource('exercises', 'ExercisesController');
 Route::resource('athletemetrics', 'AthleteMetricsController');
 Route::resource('schedule', 'ScheduleController');
+Route::resource('exercisestats', 'ExercisestatsController');
 
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 Route::get('/searchathlete', 'AthleteMetricsController@searchAthlete')->name('searchathlete');
 Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchuser');
 
 Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middleware('auth');
+Route::put('/profile-update/{id}', 'ProfileController@update')->name('myprofile.update');
 
 Auth::routes();
 

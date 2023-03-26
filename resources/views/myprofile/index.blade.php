@@ -44,7 +44,6 @@
                 @endforeach
 
 
-
                 <div class="card mt-4">
                     <h5 class="card-header">My Profile</h5>
                     <div class="card-body">
@@ -67,10 +66,19 @@
                                     </div>
 
                                     <div class="col-2 mt-4 mr-4">
-                                        <a href=""
-                                            class="btn btn-outline-success col-8 ml-auto mr-auto mt-2 mb-2 text-center">Edit
-                                            Profile
-                                        </a>
+                                        <button type="button"
+                                            class="btn btn-outline-success col-8 ml-auto mr-auto mt-2 mb-2 text-center"
+                                            data-toggle="modal" data-target="#modal-edit-{{ $athlet->user_id }}">
+                                            Edit Profile
+                                        </button>
+
+                                        <button type="button"
+                                            class="btn btn-outline-warning col-8 ml-auto mr-auto mt-2 mb-2 text-center"
+                                            data-toggle="modal" data-target="#modal-show-{{ $athlet->user_id }}">
+                                            View Metrics
+                                        </button>
+
+
                                     </div>
 
                                     <div class="col-6 mt-4">
@@ -148,16 +156,10 @@
 
                         </div>
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                        content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
+                        @include('myprofile.edit')
+                        @include('myprofile.show')
+
+
 
                     </div>
                 </div>
@@ -174,10 +176,10 @@
     </div>
 
     <!--<div class="row">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="text-center">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="text-center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>-->
 
 
     </div>
