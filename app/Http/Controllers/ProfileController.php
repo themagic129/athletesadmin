@@ -19,12 +19,25 @@ class ProfileController extends Controller
 
         $athlete = $user->athletes;
 
-        $athletetest = DB::table('athletes')->select('athletes.*', 'athletes.first_name')->where('athletes.user_id', '=', $userid)->get();
+        $athletetest = DB::table('athletes')
+            ->leftjoin('workout', 'athletes.workout_id', '=', 'workout.id')
+            ->select('athletes.*', 'athletes.first_name', 'workout.name', 'workout.description', 'workout.id')
+            ->where('athletes.user_id', '=', $userid)
+            ->get();
+
+        foreach ($athletetest as $athletete) {
+            $workoutid = $athletete->id;
+        }
+
+        $program_workout = DB::table('workout')
+            ->leftJoin('program', 'workout.program_id', '=', 'program.id')
+            ->select('workout.*', 'program.name')
+            ->where('workout.id', '=', $workoutid)->get();
 
         $coaches = coaches_trainers::all();
         $programs = Program::all();
 
-        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest'));
+        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest', 'program_workout'));
     }
 
 

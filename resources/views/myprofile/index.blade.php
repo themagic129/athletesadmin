@@ -49,10 +49,6 @@
                     <div class="card-body">
 
 
-                        @foreach ($athletetest as $athlete)
-                            {{ $athlete->first_name }}
-                        @endforeach
-
                         <div class="myinfo">
 
                             <div class="container">
@@ -82,6 +78,12 @@
                                             class="btn btn-outline-warning col-8 ml-auto mr-auto mt-2 mb-2 text-center"
                                             data-toggle="modal" data-target="#modal-show-{{ $athlet->user_id }}">
                                             View Metrics
+                                        </button>
+
+                                        <button type="button"
+                                            class="btn btn-outline-secondary col-8 ml-auto mr-auto mt-2 mb-2 text-center"
+                                            data-toggle="modal" data-target="#myworkouts">
+                                            My Workouts
                                         </button>
 
 
@@ -179,13 +181,75 @@
         </div>
 
 
+        <!-- Modal -->
+        <div class="modal fade" id="myworkouts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" style="max-width: 60%;"role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Workout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="card">
+                            <h5 class="card-header text-center">Workout's Information</h5>
+                            <div class="card-body">
+
+                                @foreach ($athletetest as $athlete)
+                                    {{ $athlete->first_name }} Workout: {{ $athlete->name }}
+                                @endforeach
+
+                                @foreach ($program_workout as $program_worko)
+                                @endforeach
+
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Workout Name</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        value="{{ $athlete->name }}" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Program</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        value="{{ $program_worko->name }}" disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">Workout Notes</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput"
+                                        value="{{ $athlete->description }}" disabled>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
     </div>
 
     <!--<div class="row">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="text-center">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="text-center">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <img class="rounded profile_photo" src="{{ asset('storage/images/' . $athlet->profile_photo) }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>-->
 
 
     </div>
