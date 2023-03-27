@@ -6,6 +6,7 @@ use App\Models\Athlete;
 use App\Models\coaches_trainers;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -14,12 +15,16 @@ class ProfileController extends Controller
 
         $user = auth()->user();
 
+        $userid = auth()->id();
+
         $athlete = $user->athletes;
+
+        $athletetest = DB::table('athletes')->select('athletes.*', 'athletes.first_name')->where('athletes.user_id', '=', $userid)->get();
 
         $coaches = coaches_trainers::all();
         $programs = Program::all();
 
-        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete'));
+        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest'));
     }
 
 

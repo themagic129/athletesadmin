@@ -17,8 +17,9 @@ class ExercisesController extends Controller
     public function index(Request $request)
     {
         $q = $request->input('q');
+        $exercisestat = ExerciseStats::all();
         $exercises = Exercise::where('name', 'like', "%$q%")->paginate(7);
-        return view('exercises.index', compact('exercises'));
+        return view('exercises.index', compact('exercises', 'exercisestat'));
     }
 
     /**
@@ -61,7 +62,9 @@ class ExercisesController extends Controller
      */
     public function show($id)
     {
-        //
+        $exercises = Exercise::all();
+
+        return view('exercises.show', compact('exercises'));
     }
 
     /**

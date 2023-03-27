@@ -13,6 +13,9 @@ class Athlete extends Model
 
     protected $fillable = ['user_id', 'organization', 'team', 'coach_trainer_id', 'program', 'first_name', 'last_name', 'birthday', 'height', 'weight', 'bats', 'throws', 'phone', 'email', 'profile_photo'];
 
+    protected $table = 'athletes';
+
+
     public function users()
     {
 

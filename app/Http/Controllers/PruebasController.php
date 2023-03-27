@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Exercise;
-use App\Models\ExerciseStats;
+use App\Models\Athlete;
 use App\Models\Workout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ExercisestatsController extends Controller
+class PruebasController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $q = $request->input('q');
-        $workouts = Workout::all();
-        $exercises = Exercise::all();
-        $exercisesstats = ExerciseStats::where('id', 'like', "%$q%")->paginate(7);
+        $athletes = DB::table('athletes')
+            ->join('workout', 'athletes.workout_id', 'workout.id')
+            ->join('exercise', 'workout.id', 'exercise.workout_id')
+            ->select('athletes.*', 'athletes.first_name', 'athletes.last_name', 'workout.name', 'exercise.name')
+            ->get();
 
-        return view('exercisestats.index', compact('exercisesstats', 'workouts', 'exercises'));
+
+        return view('pruebas', compact('athletes'));
     }
 
     /**
@@ -31,12 +33,7 @@ class ExercisestatsController extends Controller
      */
     public function create()
     {
-        $exercisestats = new ExerciseStats();
-        $workouts = Workout::all();
-
-        $exercises = Exercise::all();
-
-        return view('exercisestats.create', compact('workouts', 'exercises'));
+        //
     }
 
     /**
@@ -47,16 +44,7 @@ class ExercisestatsController extends Controller
      */
     public function store(Request $request)
     {
-        $exercisesstats = new ExerciseStats();
-        $exercisesstats->workout_id = $request->input('workout_id');
-        $exercisesstats->exercise_id = $request->input('exercise_id');
-        $exercisesstats->num_reps = $request->input('num_reps');
-        $exercisesstats->num_sets = $request->input('num_sets');
-        $exercisesstats->save();
-
-        session()->flash('message', 'Stats added successfully!');
-
-        return redirect('exercisestats');
+        //
     }
 
     /**

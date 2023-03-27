@@ -35,7 +35,7 @@
                 <!-- Tarjeta Contenedora de la tabla -->
                 <div class="card mt-2">
                     <div class="card-header">
-                        <h5 class="ml-2">Exercise Exercises</h5>
+                        <h5 class="ml-2">Exercise Stats</h5>
                         <div class="container-fluid mt-2">
                             <div class="row">
                                 <div class="col">
@@ -61,7 +61,7 @@
 
                                                     <button type="button" class="btn btn-info ml-2" data-bs-toggle="modal"
                                                         data-bs-target="#exercise-modal">
-                                                        Create Exercise
+                                                        Add Stats
                                                     </button>
 
                                                 </div>
@@ -121,6 +121,8 @@
 
                                             </td>
                                         </tr>
+                                        @include('exercisestats.edit')
+                                        @include('exercisestats.create')
                                     @endforeach
                         @endif
                         </tbody>

@@ -33,6 +33,7 @@ Route::resource('exercises', 'ExercisesController');
 Route::resource('athletemetrics', 'AthleteMetricsController');
 Route::resource('schedule', 'ScheduleController');
 Route::resource('exercisestats', 'ExercisestatsController');
+Route::resource('pruebas', 'PruebasController');
 
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 Route::get('/searchathlete', 'AthleteMetricsController@searchAthlete')->name('searchathlete');

@@ -115,8 +115,10 @@
                                                     Delete
                                                 </button>
 
+
                                             </td>
                                         </tr>
+
                                         @include('exercises.destroy')
                                         @include('exercises.edit')
                                         @include('exercises.create')

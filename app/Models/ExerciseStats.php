@@ -11,9 +11,11 @@ class ExerciseStats extends Model
 
     protected $fillable = ['id', 'workout_id', 'exercise_id', 'num_reps', 'num_sets'];
 
-    protected $table = 'exercise_Stats';
+    protected $table = 'exercise_stats';
 
     protected $primaryKey = 'id';
+
+    public $timestamps = false;
 
     public function workouts()
     {

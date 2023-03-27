@@ -83,6 +83,7 @@
                     <div class="card-body" style="margin-top: -0.5rem !important;">
 
 
+
                         @if (count($programs) == 0)
                             <p class="text-center">No data to display</p>
                         @else
@@ -104,6 +105,7 @@
                                             <td>{{ $program->id }}</td>
                                             <td>{{ $program->name }}</td>
                                             <td>{{ $program->description }}</td>
+
                                             <td>
 
                                                 <!-- Button trigger modal -->
