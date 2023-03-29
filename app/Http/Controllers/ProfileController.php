@@ -34,10 +34,17 @@ class ProfileController extends Controller
             ->select('workout.*', 'program.name')
             ->where('workout.id', '=', $workoutid)->get();
 
+
+        $exercise_workout = DB::table('exercise')
+            ->leftJoin('workout', 'exercise.workout_id', '=', 'workout.id')
+            ->select('exercise.name', 'exercise.description', 'exercise.num_reps', 'exercise.num_sets')
+            ->where('exercise.workout_id', '=', $workoutid)->get();
+
+
         $coaches = coaches_trainers::all();
         $programs = Program::all();
 
-        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest', 'program_workout'));
+        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest', 'program_workout', 'exercise_workout'));
     }
 
 
