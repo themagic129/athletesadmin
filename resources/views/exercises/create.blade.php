@@ -24,6 +24,19 @@
                             <input type="text" class="form-control" id="validationDefault02" value=""
                                 name="description" required>
                         </div>
+
+                        <div class="col">
+                            <label for="validationDefault04">Workout</label>
+                            <select class="custom-select" id="validationDefault04" name="workout_id" required>
+                                <option selected disabled value="">Select...</option>
+                                @foreach ($workouts as $workout)
+                                    <option value="{{ $workout->id }}">{{ $workout->name }} <p>
+                                        </p>
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
                     </div>
 
                 </div>

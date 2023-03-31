@@ -9,7 +9,7 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'description'];
+    protected $fillable = ['id', 'name', 'description', 'workout_id'];
 
     protected $primaryKey = 'id';
 
@@ -21,5 +21,11 @@ class Exercise extends Model
     {
 
         return $this->hasMany(ExerciseStats::class, 'exercise_id');
+    }
+
+    public function workout()
+    {
+
+        return $this->hasMany(Workout::class, 'workout_id');
     }
 }

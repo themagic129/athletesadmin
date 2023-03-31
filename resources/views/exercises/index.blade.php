@@ -91,6 +91,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Description</th>
+                                        <th>Workout</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -101,6 +102,7 @@
                                             <td>{{ $exercise->id }}</td>
                                             <td>{{ $exercise->name }}</td>
                                             <td>{{ $exercise->description }}</td>
+                                            <td>{{ $exercise->name }}</td>
                                             <td>
 
                                                 <!-- Button trigger modal -->

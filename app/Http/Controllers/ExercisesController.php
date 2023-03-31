@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\coaches_trainers;
 use App\Models\Exercise;
 use App\Models\ExerciseStats;
+use App\Models\Workout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ExercisesController extends Controller
 {
@@ -18,8 +21,13 @@ class ExercisesController extends Controller
     {
         $q = $request->input('q');
         $exercisestat = ExerciseStats::all();
-        $exercises = Exercise::where('name', 'like', "%$q%")->paginate(7);
-        return view('exercises.index', compact('exercises', 'exercisestat'));
+        $workouts = Workout::all();
+        //$exercises = Exercise::where('name', 'like', "%$q%")->paginate(7);
+        $exercises = DB::table('exercise')
+            ->join('workout', 'exercise.workout_id', '=', 'workout.id')
+            ->select('exercise.*', 'exercise.id', 'workout.name')->paginate();
+
+        return view('exercises.index', compact('exercises', 'exercisestat', 'exercises', 'workouts'));
     }
 
     /**
@@ -32,8 +40,9 @@ class ExercisesController extends Controller
         $exercises = Exercise::all();
         $q = $request->input('q');
         $exercises = Exercise::all();
+        $workouts = Workout::all();
 
-        return view('exercises.create', compact('exercises'));
+        return view('exercises.create', compact('exercises', 'workouts'));
     }
 
     /**
@@ -47,6 +56,7 @@ class ExercisesController extends Controller
         $exercises = new Exercise();
         $exercises->name = $request->input('name');
         $exercises->description = $request->input('description');
+        $exercises->workout_id = $request->input('workout_id');
         $exercises->save();
 
         session()->flash('message', 'Exercise added successfully!');
