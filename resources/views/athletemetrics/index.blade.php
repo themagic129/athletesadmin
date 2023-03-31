@@ -132,6 +132,7 @@
                                                     Delete
                                                 </button>
 
+
                                             </td>
                                         </tr>
                                         @include('athletemetrics.destroy')

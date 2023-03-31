@@ -27,4 +27,10 @@ class Workout extends Model
 
         return $this->hasMany(ExerciseStats::class, 'workout_id');
     }
+
+    public function athlete()
+    {
+
+        return $this->hasMany(Workout::class, 'workout_id');
+    }
 }

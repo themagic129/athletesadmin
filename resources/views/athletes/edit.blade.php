@@ -88,12 +88,13 @@
                             </select>
                         </div>
 
+
+
                         <div class="col mb-3">
                             <label for="validationDefault03">Team</label>
                             <input type="text" class="form-control" id="validationDefault03"
                                 value="{{ $athlete->team }}" name="team" required>
                         </div>
-
 
 
                     </div>
@@ -111,6 +112,21 @@
                                 value="{{ $athlete->height }}" name="height" required>
                         </div>
 
+                        <div class="col mb-3">
+                            <label for="validationDefault04">Workout</label>
+                            <select class="custom-select" id="validationDefault04" value="" name="workout_id"
+                                required>
+
+                                <option hidden selected value="{{ $athlete->workout->id }}">
+                                    {{ $athlete->workout->name }}
+                                </option>
+
+                                @foreach ($workout as $workou)
+                                    <option value="{{ $workou->id }}">{{ $workou->name }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
 
                     </div>
 

@@ -8,7 +8,9 @@ use App\Models\coaches_trainers;
 use App\Models\Program;
 use App\Models\Roles;
 use App\Models\User;
+use App\Models\Workout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class AthletesController extends Controller
@@ -24,9 +26,15 @@ class AthletesController extends Controller
         $q = $request->input('q');
         $athletes = Athlete::where('first_name', 'like', "%$q%")->paginate(7);
         $coaches = coaches_trainers::all();
+        $workout = Workout::all();
+
+
+
+
+
         $users = User::where('email', 'like', "%$q%")->paginate(1);
 
-        return view('athletes.index', compact('athletes', 'users', 'coaches', 'programs'));
+        return view('athletes.index', compact('athletes', 'users', 'coaches', 'programs', 'workout'));
     }
 
     public function searchUser(Request $request)
@@ -35,9 +43,10 @@ class AthletesController extends Controller
         $athletes = Athlete::all();
         $programs = Program::all();
         $coaches = coaches_trainers::all();
+        $workouts = Workout::all();
         $q = $request->input('q');
         $users = User::where('email', 'like', "%$q%")->paginate(1);
-        return view('athletes.create', compact('athletes', 'users', 'coaches', 'programs'));
+        return view('athletes.create', compact('athletes', 'users', 'coaches', 'programs', 'workouts'));
     }
 
     /**
@@ -50,8 +59,9 @@ class AthletesController extends Controller
         $programs = Program::all();
         $q = $request->input('q');
         $coaches = coaches_trainers::all();
+        $workouts = Workout::all();
         $users = User::where('email', 'like', "%$q%")->paginate(1);
-        return view('athletes.create', compact('users', 'coaches', 'programs'));
+        return view('athletes.create', compact('users', 'coaches', 'programs', 'workouts'));
     }
 
     /**
@@ -78,6 +88,7 @@ class AthletesController extends Controller
         $athlete->throws = $request->input('throws');
         $athlete->phone = $request->input('phone');
         $athlete->email = $request->input('email');
+        $athlete->workout_id = $request->input('workout_id');
 
         $size = $request->file('image')->getSize();
         $name = $request->file('image')->getClientOriginalName();
@@ -120,7 +131,16 @@ class AthletesController extends Controller
     {
         $programs = Program::all();
         $coaches = coaches_trainers::all();
-        return view('athletes.edit', compact('coaches', 'programs'));
+        $athletes = Athlete::all();
+        $workout = Workout::all();
+
+        $athlete = DB::table('athletes')
+            ->join('workouts', 'athletes.workout_id', '=', 'workouts.id')
+            ->select('athletes.*', 'workouts.name as workout_name')
+            ->where('athletes.id', $id)
+            ->first();
+
+        return view('athletes.edit', compact('coaches', 'programs', 'athlete', 'workout'));
     }
 
     /**
@@ -147,6 +167,7 @@ class AthletesController extends Controller
         $athlete->throws = $request->input('throws');
         $athlete->phone = $request->input('phone');
         $athlete->email = $request->input('email');
+        $athlete->workout_id = $request->input('workout_id');
         //$athlete->profile_photo = $request->input('profile_photo');
         $athlete->save();
         session()->flash('message', 'Athlete updated successfully!');

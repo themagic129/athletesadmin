@@ -61,7 +61,7 @@
                                         <div class="card-body">
 
                                             <!-- Button trigger modal
-                                                                                                                                                                                                      -->
+                                                                                                                                                                                                                                  -->
 
                                             <div class="row">
 
@@ -161,6 +161,7 @@
                                                     data-target="#modal-delete-{{ $athlete->user_id }}">
                                                     Delete
                                                 </button>
+
 
                                             </td>
                                         </tr>

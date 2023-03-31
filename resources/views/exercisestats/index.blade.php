@@ -47,12 +47,12 @@
 
                                                 <div class="col d-flex">
                                                     <!-- Form Busqueda -->
-                                                    <form action="{{ route('exercises.index') }}" method="GET"
+                                                    <form action="{{ route('exercisestats.index') }}" method="GET"
                                                         class="form-inline my-2 my-lg-0">
 
                                                         @csrf
 
-                                                        <input class="form-control mr-sm-2" placeholder="Excercises Name"
+                                                        <input class="form-control mr-sm-2" placeholder="Excercise ID"
                                                             name="q">
                                                         <button type="submit"
                                                             class="btn btn-primary my-2 my-sm-0">Search</button>

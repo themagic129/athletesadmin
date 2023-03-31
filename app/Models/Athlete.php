@@ -11,7 +11,7 @@ class Athlete extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'organization', 'team', 'coach_trainer_id', 'program', 'first_name', 'last_name', 'birthday', 'height', 'weight', 'bats', 'throws', 'phone', 'email', 'profile_photo'];
+    protected $fillable = ['user_id', 'organization', 'team', 'coach_trainer_id', 'program', 'first_name', 'last_name', 'birthday', 'height', 'weight', 'bats', 'throws', 'phone', 'email', 'profile_photo', 'workout_id'];
 
     protected $table = 'athletes';
 
@@ -39,5 +39,11 @@ class Athlete extends Model
     {
 
         return $this->hasMany(AthleteMetric::class, 'athlete_id');
+    }
+
+    public function workout()
+    {
+
+        return $this->belongsTo(Workout::class, 'workout_id');
     }
 }
