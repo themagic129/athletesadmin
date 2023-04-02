@@ -25,7 +25,7 @@ class ExercisesController extends Controller
         //$exercises = Exercise::where('name', 'like', "%$q%")->paginate(7);
         $exercises = DB::table('exercise')
             ->join('workout', 'exercise.workout_id', '=', 'workout.id')
-            ->select('exercise.*', 'exercise.id', 'workout.name')->paginate();
+            ->select('exercise.*', 'exercise.id', 'exercise.name as exercise_name', 'workout.name')->paginate();
 
         return view('exercises.index', compact('exercises', 'exercisestat', 'exercises', 'workouts'));
     }
@@ -56,6 +56,8 @@ class ExercisesController extends Controller
         $exercises = new Exercise();
         $exercises->name = $request->input('name');
         $exercises->description = $request->input('description');
+        $exercises->num_reps = $request->input('num_reps');
+        $exercises->num_sets = $request->input('num_sets');
         $exercises->workout_id = $request->input('workout_id');
         $exercises->save();
 
@@ -104,6 +106,8 @@ class ExercisesController extends Controller
         $exercises = Exercise::findOrFail($id);
         $exercises->name = $request->input('name');
         $exercises->description = $request->input('description');
+        $exercises->num_reps = $request->input('num_reps');
+        $exercises->num_sets = $request->input('num_sets');
         $exercises->save();
         session()->flash('message', 'Exercise updated successfully!');
         return redirect('exercises');

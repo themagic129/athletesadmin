@@ -10,41 +10,50 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
+
+
     public function show()
     {
+        try {
 
-        $user = auth()->user();
+            $user = auth()->user();
 
-        $userid = auth()->id();
+            $userid = auth()->id();
 
-        $athlete = $user->athletes;
+            $athlete = $user->athletes;
 
-        $athletetest = DB::table('athletes')
-            ->leftjoin('workout', 'athletes.workout_id', '=', 'workout.id')
-            ->select('athletes.*', 'athletes.first_name', 'workout.name', 'workout.description', 'workout.id')
-            ->where('athletes.user_id', '=', $userid)
-            ->get();
 
-        foreach ($athletetest as $athletete) {
-            $workoutid = $athletete->id;
+            $athletetest = DB::table('athletes')
+                ->leftjoin('workout', 'athletes.workout_id', '=', 'workout.id')
+                ->select('athletes.*', 'athletes.first_name', 'workout.name', 'workout.description', 'workout.id')
+                ->where('athletes.user_id', '=', $userid)
+                ->get();
+
+            foreach ($athletetest as $athletete) {
+                $workoutid = $athletete->id;
+            }
+
+
+            $program_workout = DB::table('workout')
+                ->leftJoin('program', 'workout.program_id', '=', 'program.id')
+                ->select('workout.*', 'program.name')
+                ->where('workout.id', '=', $workoutid)->get();
+
+
+            $exercise_workout = DB::table('exercise')
+                ->leftJoin('workout', 'exercise.workout_id', '=', 'workout.id')
+                ->select('exercise.name', 'exercise.description', 'exercise.num_reps', 'exercise.num_sets')
+                ->where('exercise.workout_id', '=', $workoutid)->get();
+
+
+            $coaches = coaches_trainers::all();
+            $programs = Program::all();
+
+            return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest', 'program_workout', 'exercise_workout'));
+        } catch (\Exception $e) {
+
+            return view('myprofile.noprofile');
         }
-
-        $program_workout = DB::table('workout')
-            ->leftJoin('program', 'workout.program_id', '=', 'program.id')
-            ->select('workout.*', 'program.name')
-            ->where('workout.id', '=', $workoutid)->get();
-
-
-        $exercise_workout = DB::table('exercise')
-            ->leftJoin('workout', 'exercise.workout_id', '=', 'workout.id')
-            ->select('exercise.name', 'exercise.description', 'exercise.num_reps', 'exercise.num_sets')
-            ->where('exercise.workout_id', '=', $workoutid)->get();
-
-
-        $coaches = coaches_trainers::all();
-        $programs = Program::all();
-
-        return view('myprofile.index', compact('user', 'athlete', 'coaches', 'programs', 'athlete', 'athletetest', 'program_workout', 'exercise_workout'));
     }
 
 

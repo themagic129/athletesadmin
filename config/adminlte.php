@@ -322,7 +322,7 @@ return [
                     'text' => 'My Profile',
                     'url'  => 'my-profile',
                     'icon' => 'fas fa-chart-area',
-                    'can' => ['coaches', 'athletes'],
+                    'can' => ['athletes'],
 
 
                 ],

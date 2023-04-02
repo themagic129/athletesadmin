@@ -100,7 +100,7 @@
                                     @foreach ($exercises as $exercise)
                                         <tr>
                                             <td>{{ $exercise->id }}</td>
-                                            <td>{{ $exercise->name }}</td>
+                                            <td>{{ $exercise->exercise_name }}</td>
                                             <td>{{ $exercise->description }}</td>
                                             <td>{{ $exercise->name }}</td>
                                             <td>

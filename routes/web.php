@@ -38,9 +38,13 @@ Route::resource('pruebas', 'PruebasController');
 Route::get('/searchuser', 'AthletesController@searchUser')->name('searchuser');
 Route::get('/searchathlete', 'AthleteMetricsController@searchAthlete')->name('searchathlete');
 Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchuser');
-
+Route::get('/no-profile', function () {
+    return view('myprofile.noprofile');
+});
 Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middleware('auth');
+
 Route::put('/profile-update/{id}', 'ProfileController@update')->name('myprofile.update');
+
 
 Auth::routes();
 

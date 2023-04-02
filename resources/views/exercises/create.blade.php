@@ -25,18 +25,32 @@
                                 name="description" required>
                         </div>
 
-                        <div class="col">
-                            <label for="validationDefault04">Workout</label>
-                            <select class="custom-select" id="validationDefault04" name="workout_id" required>
-                                <option selected disabled value="">Select...</option>
-                                @foreach ($workouts as $workout)
-                                    <option value="{{ $workout->id }}">{{ $workout->name }} <p>
-                                        </p>
-                                    </option>
-                                @endforeach
 
-                            </select>
+                        <div class="col mb-3">
+                            <label for="validationDefault02">Num. Reps</label>
+                            <input type="text" class="form-control" id="validationDefault02" value=""
+                                name="num_reps" required>
                         </div>
+
+                        <div class="col mb-3">
+                            <label for="validationDefault02">Num. Sets</label>
+                            <input type="text" class="form-control" id="validationDefault02" value=""
+                                name="num_reps" required>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <label for="validationDefault04">Workout</label>
+                        <select class="custom-select" id="validationDefault04" name="workout_id" required>
+                            <option selected disabled value="">Select...</option>
+                            @foreach ($workouts as $workout)
+                                <option value="{{ $workout->id }}">{{ $workout->name }} <p>
+                                    </p>
+                                </option>
+                            @endforeach
+
+                        </select>
                     </div>
 
                 </div>

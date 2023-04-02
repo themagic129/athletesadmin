@@ -37,6 +37,21 @@
                         </div>
 
 
+                        <div class="col mb-3">
+                            <label for="validationDefault02">Num. Reps</label>
+                            <input type="text" class="form-control" id="validationDefault02"
+                                value="{{ $exercise->num_reps }}" name="num_reps" required>
+                        </div>
+
+                        <div class="col mb-3">
+                            <label for="validationDefault02">Num. Sets</label>
+                            <input type="text" class="form-control" id="validationDefault02"
+                                value="{{ $exercise->num_sets }}" name="num_reps" required>
+                        </div>
+
+
+
+
 
                     </div>
 

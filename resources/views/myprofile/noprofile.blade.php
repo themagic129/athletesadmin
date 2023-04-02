@@ -26,59 +26,45 @@
 
                     </div>
 
-                    <!--<div class="row">
-                                                                                                                                                          
-
-
-                  </div>
-
-
-
-                </div>
-
-
-                </div>
-                  </div>
-
-
-                </div>
-
-
-
-@stop
 
 
 
 
-@section('css')
-                                                            <link rel="stylesheet" href="/css/admin_custom.css">
-                                                            <style>
-                                                                .image-container {
-
-                                                                    width: 150px;
-                                                                    height: 220px;
-                                                                    border-radius: 100px
-                                                                }
-                                                            </style>
+                @stop
 
 
-@stop
-
-@section('js')
-                                                            <script>
-                                                                console.log('Hi!');
-                                                            </script>
-                                                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-                                                                integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-                                                            </script>
-                                                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-                                                                integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
-                                                            </script>
 
 
-                                                            <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-                                                            <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-                                                            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+                @section('css')
+                    <link rel="stylesheet" href="/css/admin_custom.css">
+                    <style>
+                        .image-container {
 
-                                                            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-@stop
+                            width: 150px;
+                            height: 220px;
+                            border-radius: 100px
+                        }
+                    </style>
+
+
+                @stop
+
+                @section('js')
+                    <script>
+                        console.log('Hi!');
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
+                    </script>
+
+
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+                    <link rel="stylesheet" type="text/css"
+                        href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+                @stop
