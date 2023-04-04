@@ -90,6 +90,7 @@ class ExercisesController extends Controller
         $exercises = Exercise::all();
 
 
+
         return view('exercises.edit', compact('exercises'));
     }
 
