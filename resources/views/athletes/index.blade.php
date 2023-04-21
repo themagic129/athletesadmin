@@ -61,7 +61,7 @@
                                         <div class="card-body">
 
                                             <!-- Button trigger modal
-                                                                                                                                                                                                                                                          -->
+                                                                                                                                                                                                                                                                  -->
 
                                             <div class="row">
 

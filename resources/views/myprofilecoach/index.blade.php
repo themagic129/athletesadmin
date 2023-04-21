@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Athletes')
+@section('title', 'My Profile')
 
 @section('content_header')
 
@@ -76,7 +76,7 @@
 
                                                 <button type="button"
                                                     class="btn btn-outline-secondary col-2 ml-auto mr-auto mt-2 mb-2 text-center"
-                                                    data-toggle="modal" data-target="#myworkouts">
+                                                    data-toggle="modal" data-target="#myathletes">
                                                     Assigned Athletes
                                                 </button>
 
@@ -149,7 +149,61 @@
 
 
         <!-- Modal -->
+        <div class="modal fade" id="myathletes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" style="max-width: 60%;"role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Workout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
 
+                        <div class="card">
+                            <h5 class="card-header text-center">Assigned Athletes</h5>
+                            <div class="card-body">
+
+                                <table class="table text-center">
+
+                                    <thead class="thead-dark">
+
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Team</th>
+                                            <th>Program</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($coaches_athletes as $coaches_athlete)
+                                            <tr>
+                                                <td>{{ $coaches_athlete->user_id }}</td>
+                                                <td>{{ $coaches_athlete->first_name }}</td>
+                                                <td>{{ $coaches_athlete->last_name }}</td>
+                                                <td>{{ $coaches_athlete->team }}</td>
+                                                <td>{{ $coaches_athlete->program }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

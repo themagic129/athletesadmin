@@ -41,6 +41,10 @@ Route::get('/coachsearchuser', 'CoachController@searchUser')->name('coachsearchu
 Route::get('/no-profile', function () {
     return view('myprofile.noprofile');
 });
+
+Route::get('/no-profilecoach', function () {
+    return view('myprofilecoach.noprofile');
+});
 Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middleware('auth');
 Route::get('/my-profilecoach', 'CoachProfileController@show')->name('my-profilecoach')->middleware('auth');
 

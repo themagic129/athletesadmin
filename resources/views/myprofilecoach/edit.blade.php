@@ -25,7 +25,7 @@
                         <div class="col">
                             <label for="validationDefault01">ID</label>
                             <input type="text" class="form-control" id="userid" value="{{ $coach->user_id }}"
-                                name="user_id" required>
+                                name="user_id" required readonly>
 
                         </div>
 

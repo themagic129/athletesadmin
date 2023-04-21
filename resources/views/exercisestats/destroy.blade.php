@@ -1,8 +1,8 @@
 <!-- Modal -->
-<div class="modal fade" id="modal-delete-{{ $exercise->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal-delete-{{ $exercisestat->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="{{ route('exercises.destroy', $exercise->id) }}" method="post">
+        <form action="{{ route('exercises.destroy', $exercisestat->id) }}" method="post">
             @csrf
             @method('DELETE')
 
@@ -15,7 +15,7 @@
                 </div>
                 <div class="modal-body">
 
-                    Are you sure to delete the data {{ $exercise->name }} ?
+                    Are you sure to delete the data?
 
                 </div>
                 <div class="modal-footer">

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+
 class AthletesController extends Controller
 {
     /**
@@ -69,50 +70,55 @@ class AthletesController extends Controller
      */
     public function store(Request $request)
     {
-        $athlete = new Athlete();
 
-        $athlete->user_id = $request->input('user_id');
-        $athlete->organization = $request->input('organization');
-        $athlete->first_name = $request->input('first_name');
-        $athlete->last_name = $request->input('last_name');
-        $athlete->coach_trainer_id = $request->input('coach_trainer_id');
-        $athlete->program = $request->input('program');
-        $athlete->team = $request->input('team');
-        $athlete->birthday = $request->input('birthday');
-        $athlete->height = $request->input('height');
-        $athlete->weight = $request->input('weight');
-        $athlete->bats = $request->input('bats');
-        $athlete->throws = $request->input('throws');
-        $athlete->phone = $request->input('phone');
-        $athlete->email = $request->input('email');
-        $athlete->workout_id = $request->input('workout_id');
+        try {
+            $athlete = new Athlete();
+            $athlete->user_id = $request->input('user_id');
+            $athlete->organization = $request->input('organization');
+            $athlete->first_name = $request->input('first_name');
+            $athlete->last_name = $request->input('last_name');
+            $athlete->coach_trainer_id = $request->input('coach_trainer_id');
+            $athlete->program = $request->input('program');
+            $athlete->team = $request->input('team');
+            $athlete->birthday = $request->input('birthday');
+            $athlete->height = $request->input('height');
+            $athlete->weight = $request->input('weight');
+            $athlete->bats = $request->input('bats');
+            $athlete->throws = $request->input('throws');
+            $athlete->phone = $request->input('phone');
+            $athlete->email = $request->input('email');
+            $athlete->workout_id = $request->input('workout_id');
 
 
-        $validatedData = $request->validate([
-            'image' => 'nullable|file'
-        ]);
+            $validatedData = $request->validate([
+                'image' => 'nullable|file'
+            ]);
 
-        if ($request->hasFile('image')) {
-            $size = $request->file('image')->getSize();
-            $name = $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images/', $name);
-            $athlete->profile_photo = $name;
+            if ($request->hasFile('image')) {
+                $size = $request->file('image')->getSize();
+                $name = $request->file('image')->getClientOriginalName();
+                $request->file('image')->storeAs('public/images/', $name);
+                $athlete->profile_photo = $name;
+            }
+
+
+
+            //$photo = new ProfilePhoto();
+            //$photo->name = $name;
+            //$photo->size = $size;
+            //$photo->save();
+
+
+            $athlete->save();
+
+
+            session()->flash('message', 'Athlete added successfully!');
+
+            return redirect('athletes');
+        } catch (\Exception $e) {
+
+            return redirect('athletes')->with('error', 'Athlete already exist, unable to create');;
         }
-
-
-
-        //$photo = new ProfilePhoto();
-        //$photo->name = $name;
-        //$photo->size = $size;
-        //$photo->save();
-
-
-        $athlete->save();
-
-
-        session()->flash('message', 'Athlete added successfully!');
-
-        return redirect('athletes');
     }
 
     /**

@@ -114,7 +114,7 @@
                                     <div class="col">
                                         <label for="validationDefault01">ID</label>
                                         <input type="text" class="form-control" id="userid" value=""
-                                            name="athlete_id" required>
+                                            name="athlete_id" required readonly>
 
                                     </div>
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Exercises')
+@section('title', 'Exercise Stats')
 
 @section('content_header')
 
@@ -121,6 +121,7 @@
 
                                             </td>
                                         </tr>
+                                        @include('exercisestats.destroy')
                                         @include('exercisestats.edit')
                                         @include('exercisestats.create')
                                     @endforeach

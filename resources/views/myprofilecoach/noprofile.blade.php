@@ -20,14 +20,11 @@
 
 
                         <div class="alert alert-light text-center" role="alert">
-                            <h5>Your profile is not created yet, please contact your trainer or coach!</h5>
+                            <h5>Your profile is not created yet, please contact your system administrator</h5>
                         </div>
 
 
                     </div>
-
-
-
 
 
                 @stop
@@ -37,14 +34,7 @@
 
                 @section('css')
                     <link rel="stylesheet" href="/css/admin_custom.css">
-                    <style>
-                        .image-container {
 
-                            width: 150px;
-                            height: 220px;
-                            border-radius: 100px
-                        }
-                    </style>
 
 
                 @stop

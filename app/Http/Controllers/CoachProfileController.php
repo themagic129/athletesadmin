@@ -10,6 +10,7 @@ class CoachProfileController extends Controller
 {
     public function show()
     {
+
         try {
 
             $user = auth()->user();
@@ -19,11 +20,27 @@ class CoachProfileController extends Controller
 
             $coaches = DB::table('coaches_trainers')->select('user_id', 'first_name', 'last_name', 'phone', 'email', 'certifications', 'organization', 'specialty')->where('user_id', '=', $userid)->get();
 
-            return view('myprofilecoach.index', compact('user', 'coaches'));
+            $coaches_athletes = DB::table('athletes')->select('user_id', 'first_name', 'last_name', 'team', 'program', 'program')->where('coach_trainer_id', '=', $userid)->get();
+
+
+
+            foreach ($coaches as $coach) {
+                $coach = $coach->user_id;
+            }
+
+            return view('myprofilecoach.index', compact('user', 'coaches', 'coach', 'coaches_athletes'));
         } catch (\Exception $e) {
 
             return view('myprofilecoach.noprofile');
         }
+    }
+
+    public function edit()
+    {
+
+        $coaches = coaches_trainers::all();
+
+        return view('myprofilecoach.edit', compact('coaches'));
     }
 
     public function update(Request $request, $id)
