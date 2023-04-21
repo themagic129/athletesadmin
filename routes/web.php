@@ -42,8 +42,10 @@ Route::get('/no-profile', function () {
     return view('myprofile.noprofile');
 });
 Route::get('/my-profile', 'ProfileController@show')->name('my-profile')->middleware('auth');
+Route::get('/my-profilecoach', 'CoachProfileController@show')->name('my-profilecoach')->middleware('auth');
 
 Route::put('/profile-update/{id}', 'ProfileController@update')->name('myprofile.update');
+Route::put('/coachprofile-update/{id}', 'CoachProfileController@update')->name('my-profilecoach.update');
 
 
 Auth::routes();

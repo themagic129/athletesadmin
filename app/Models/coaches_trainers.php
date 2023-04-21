@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Athlete;
 
 class coaches_trainers extends Model
@@ -17,6 +18,12 @@ class coaches_trainers extends Model
     protected $primaryKey = 'user_id';
 
     protected $table = 'coaches_trainers';
+
+    public function users()
+    {
+
+        return $this->belongsTo(User::class);
+    }
 
     public function athletes()
     {

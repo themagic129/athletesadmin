@@ -89,9 +89,6 @@
                                     </form>
                                     <!-- Fin Formulario -->
 
-
-
-
                                 </div>
                             </div>
 
@@ -105,7 +102,7 @@
                                     <div class="col">
                                         <label for="validationDefault01">ID</label>
                                         <input type="text" class="form-control" id="userid" value=""
-                                            name="user_id" required>
+                                            name="user_id" required readonly>
 
                                     </div>
 

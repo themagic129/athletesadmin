@@ -110,7 +110,7 @@
                                     <div class="col">
                                         <label for="validationDefault01">ID</label>
                                         <input type="text" class="form-control" id="userid" value=""
-                                            name="user_id" required>
+                                            name="user_id" required readonly>
 
                                     </div>
 
@@ -118,7 +118,7 @@
                                     <div class="col mb-3">
                                         <label for="validationDefault02">Organization</label>
                                         <input type="text" class="form-control" id="validationDefault02" value=""
-                                            name="organization" required>
+                                            name="organization">
                                     </div>
                                 </div>
 
@@ -140,8 +140,7 @@
 
                                     <div class="col mb-3">
                                         <label for="validationDefault04">Coach/Trainer</label>
-                                        <select class="custom-select" id="validationDefault04" name="coach_trainer_id"
-                                            required>
+                                        <select class="custom-select" id="validationDefault04" name="coach_trainer_id">
                                             <option selected disabled value="">Select...</option>
                                             @foreach ($coaches as $coach)
                                                 <option value="{{ $coach->user_id }}">{{ $coach->first_name }}
@@ -158,7 +157,7 @@
 
                                     <div class="col mb-3">
                                         <label for="validationDefault04">Program</label>
-                                        <select class="custom-select" id="validationDefault04" name="program" required>
+                                        <select class="custom-select" id="validationDefault04" name="program">
                                             <option selected disabled value="">Select...</option>
                                             @foreach ($programs as $program)
                                                 <option value="{{ $program->name }}">{{ $program->name }} <p>
@@ -172,8 +171,7 @@
 
                                     <div class="col mb-3">
                                         <label for="validationDefault03">Team</label>
-                                        <input type="text" class="form-control" id="validationDefault03" name="team"
-                                            required>
+                                        <input type="text" class="form-control" id="validationDefault03" name="team">
                                     </div>
 
 
@@ -185,7 +183,7 @@
 
                                     <div class="col">
                                         <label for="validationDefault05">Birthday</label>
-                                        <input id="datepicker" name="birthday" />
+                                        <input id="datepicker" name="birthday" required />
                                         <script>
                                             $('#datepicker').datepicker({
                                                 uiLibrary: 'bootstrap4'
@@ -197,7 +195,7 @@
                                     <div class="col mb-3">
                                         <label for="validationDefault05">Height</label>
                                         <input type="text" class="form-control" id="validationDefault05"
-                                            name="height" required>
+                                            name="height">
                                     </div>
 
 
@@ -209,13 +207,13 @@
                                     <div class="col mb-3">
                                         <label for="validationDefault05">Weight</label>
                                         <input type="text" class="form-control" id="validationDefault05"
-                                            name="weight" required>
+                                            name="weight">
                                     </div>
 
                                     <div class="col mb-3">
 
                                         <label for="validationDefault04">Bats</label>
-                                        <select class="custom-select" id="validationDefault04" name="bats" required>
+                                        <select class="custom-select" id="validationDefault04" name="bats">
                                             <option selected disabled value="">Select...</option>
                                             <option>L</option>
                                             <option>R</option>
@@ -228,7 +226,7 @@
 
                                     <div class="col mb-3">
                                         <label for="validationDefault04">Throws</label>
-                                        <select class="custom-select" id="validationDefault04" name="throws" required>
+                                        <select class="custom-select" id="validationDefault04" name="throws">
                                             <option selected disabled value="">Seleccionar...</option>
                                             <option>L</option>
                                             <option>R</option>
@@ -246,7 +244,7 @@
                                             <div class="col mb-3">
                                                 <label for="validationDefault05">Phone</label>
                                                 <input type="text" class="form-control" id="validationDefault05"
-                                                    name="phone" required>
+                                                    name="phone">
                                             </div>
                                         </div>
                                     </div>
@@ -256,15 +254,14 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Email address</label>
                                             <input type="email" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="name@example.com" name="email">
+                                                placeholder="name@example.com" name="email" required>
                                         </div>
 
                                     </div>
 
                                     <div class="col">
                                         <label for="validationDefault04">Workout</label>
-                                        <select class="custom-select" id="validationDefault04" name="workout_id"
-                                            required>
+                                        <select class="custom-select" id="validationDefault04" name="workout_id">
                                             <option selected disabled value="">Select...</option>
                                             @foreach ($workouts as $workout)
                                                 <option value="{{ $workout->id }}">{{ $workout->name }} <p>
@@ -284,7 +281,7 @@
                                         <label for="customFile" class="form-label">Profile Photo</label>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="customFile"
-                                                name="image">
+                                                name="image" required>
                                             <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                     </div>

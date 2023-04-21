@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->hasMany(Athlete::class);
     }
 
+    public function coach()
+    {
+
+        return $this->hasMany(coaches_trainers::class);
+    }
 
 
 

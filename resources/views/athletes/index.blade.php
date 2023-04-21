@@ -61,7 +61,7 @@
                                         <div class="card-body">
 
                                             <!-- Button trigger modal
-                                                                                                                                                                                                                                  -->
+                                                                                                                                                                                                                                                          -->
 
                                             <div class="row">
 
@@ -96,6 +96,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="card-body" style="margin-top: -0.5rem !important;">
@@ -135,7 +136,8 @@
                                             <td>{{ $athlete->user_id }}</td>
                                             <td>{{ $athlete->organization }}</td>
                                             <td>{{ $athlete->team }}</td>
-                                            <td>{{ $athlete->coach_trainer->first_name }}
+                                            <td>
+                                                {{ $athlete->coach_trainer->first_name }}
                                                 {{ $athlete->coach_trainer->last_name }}</td>
                                             <td>{{ $athlete->program }}</td>
                                             <td>{{ $athlete->first_name }}</td>

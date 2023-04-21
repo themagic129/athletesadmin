@@ -32,7 +32,12 @@ class Athlete extends Model
 
     public function setBirthdayAttribute($value)
     {
-        $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+
+        if (empty($value)) { // verifica si $value está vacío o nulo
+            $this->attributes['birthday'] = '1900-01-01'; // o cualquier otra fecha por defecto que quieras en formato de fecha válido para MySQL
+        } else {
+            $this->attributes['birthday'] = \Carbon\Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+        }
     }
 
     public function athletemetric()

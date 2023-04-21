@@ -328,6 +328,15 @@ return [
                 ],
 
                 [
+                    'text' => 'My Profile',
+                    'url'  => 'my-profilecoach',
+                    'icon' => 'fas fa-chart-area',
+                    'can' => ['coaches'],
+
+
+                ],
+
+                [
                     'text' => 'Athletes',
                     'url'  => 'athletes',
                     'icon' => 'fas fa-running',

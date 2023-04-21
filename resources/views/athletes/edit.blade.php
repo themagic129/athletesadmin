@@ -22,13 +22,6 @@
 
                     <h5 class="card-header">Athlete's Information</h5>
                     <div class="form-row">
-                        <div class="col">
-                            <label for="validationDefault01">ID</label>
-                            <input type="text" class="form-control" id="userid" value="{{ $athlete->user_id }}"
-                                name="user_id" required>
-
-                        </div>
-
 
                         <div class="col mb-3">
                             <label for="validationDefault02">Organization</label>
@@ -52,6 +45,10 @@
                             <input type="text" class="form-control" id="validationDefault05"
                                 value="{{ $athlete->last_name }}" name="last_name" required>
                         </div>
+
+
+
+
 
                         <div class="col mb-3">
                             <label for="validationDefault04">Coach/Trainer</label>

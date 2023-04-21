@@ -28,11 +28,8 @@ class AthletesController extends Controller
         $coaches = coaches_trainers::all();
         $workout = Workout::all();
 
-
-
-
-
         $users = User::where('email', 'like', "%$q%")->paginate(1);
+
 
         return view('athletes.index', compact('athletes', 'users', 'coaches', 'programs', 'workout'));
     }
@@ -90,12 +87,20 @@ class AthletesController extends Controller
         $athlete->email = $request->input('email');
         $athlete->workout_id = $request->input('workout_id');
 
-        $size = $request->file('image')->getSize();
-        $name = $request->file('image')->getClientOriginalName();
 
-        $request->file('image')->storeAs('public/images/', $name);
+        $validatedData = $request->validate([
+            'image' => 'nullable|file'
+        ]);
 
-        $athlete->profile_photo = $name;
+        if ($request->hasFile('image')) {
+            $size = $request->file('image')->getSize();
+            $name = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images/', $name);
+            $athlete->profile_photo = $name;
+        }
+
+
+
         //$photo = new ProfilePhoto();
         //$photo->name = $name;
         //$photo->size = $size;
@@ -153,8 +158,6 @@ class AthletesController extends Controller
     public function update(Request $request, $id)
     {
         $athlete = Athlete::findOrFail($id);
-
-        $athlete->user_id = $request->input('user_id');
         $athlete->organization = $request->input('organization');
         $athlete->first_name = $request->input('first_name');
         $athlete->last_name = $request->input('last_name');
@@ -169,6 +172,18 @@ class AthletesController extends Controller
         $athlete->email = $request->input('email');
         $athlete->workout_id = $request->input('workout_id');
         //$athlete->profile_photo = $request->input('profile_photo');
+
+        $validatedData = $request->validate([
+            'image' => 'nullable|file'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $size = $request->file('image')->getSize();
+            $name = $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images/', $name);
+            $athlete->profile_photo = $name;
+        }
+
         $athlete->save();
         session()->flash('message', 'Athlete updated successfully!');
         return redirect('athletes');
